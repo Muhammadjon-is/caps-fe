@@ -1,0 +1,63 @@
+:root {
+    --color-131921: #131921;
+    --color-3b4149: #3b4149;
+    --color-febd69: #febd69;
+    --color-232f3e: #232f3e;
+    --color-bf4800: #bf4800;
+    --color-f5f5f7: #f5f5f7;
+    --color-ededed: #ededed;
+    --color-777777: #777777;
+    --color-1c1c1b: #1c1c1b;
+  }
+.auth-card {
+    padding: 20px;
+    background-color: #111111;
+    width: 500px;
+    margin: 30px auto;
+    border-radius: 10px;
+    border: 1px solid rgb(227, 223, 223);
+  }
+  .auth-card h3 {
+    font-size: 19px;
+    font-weight: 500;
+    color: orange
+  }
+  .auth-card p {
+    font-size: 13px;
+    color: orange;
+  }
+  .auth-card .form-control {
+    height: 50px;
+    background-color: #111111;
+    color: orange;
+    border: 2px solid rgb(222, 218, 218);
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .button {
+    background-color: var(--color-232f3e);
+    color: white;
+    font-size: 14px;
+    padding: 13px 33px;
+    border-radius: 25px;
+  }
+  .auth-card a {
+    font-size: 14px;
+    font-weight: 400;
+    color: orange;
+  }
+  .signup {
+    background-color: #111111;
+    color: orange;
+    border: none;
+   
+  }
+  .signup:hover {
+    background-color: #111111;
+    color: orange;
+  }
+
+.login-wrapper{
+    background-color: #111111;
+    color:  orange;
+}

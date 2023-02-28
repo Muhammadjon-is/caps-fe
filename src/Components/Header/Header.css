@@ -1,0 +1,36 @@
+
+
+
+.header-top-strip {
+    border-bottom: 1px solid #111111;
+    background-color:  #111111;
+  }
+  .header-upper {
+    background-color: #111111;
+  }
+  .header-bottom {
+    background-color: #111111;
+  }
+  
+  .header-upper .input-group-text {
+    background-color: #111111;
+    color: orange;
+  }
+  .main-logo{
+    color: orange;
+  }
+  .header-upper .input-group-text:hover{
+    cursor: pointer;
+  }
+  .header-upper.header-upper-links img {
+    width: 35px;
+    height: 35px;
+  }
+ .menu-links a  {
+    color: orange;
+ }
+ .menu-links a:hover{
+    cursor: pointer;
+ }
+  
+  
