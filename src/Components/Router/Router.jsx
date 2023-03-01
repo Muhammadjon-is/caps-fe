@@ -3,9 +3,9 @@ import Cart from "../Cart/Cart"
 import Contact from "../Contact/Contact"
 import Home from "../Home/Home"
 import Login from "../Login.jsx/Login"
-import Product from "../Product/Product"
 import SignUp from "../SignUp/SignUp"
-
+import OurStore from "../OurStore/OurStore"
+import Checkout from "../Checkout/Checkout"
 
 const RoutersApi = [
     {
@@ -13,11 +13,11 @@ const RoutersApi = [
         path:"/",
         element:<Home/>
     },
-    // {
-    //     id:2,
-    //     path:"/store",
-    //     element:<Store/>
-    // },
+    {
+        id:2,
+        path:"/OurStore",
+        element:<OurStore/>
+    },
     {
         id:3,
         path:"/contact",
@@ -45,9 +45,10 @@ const RoutersApi = [
     },
     {
         id:8,
-        path:"/product",
-        element:<Product/>
+        path:"/checkout",
+        element:<Checkout/>
     },
+  
 ]
 
 export default RoutersApi

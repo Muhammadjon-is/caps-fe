@@ -4,6 +4,7 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import RoutersApi from './Components/Router/Router';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Brands from './Components/Brands/Brands';
 function App() {
   return (
      <div className='app'>
@@ -15,7 +16,8 @@ function App() {
           )
         })}
       </Routes>
-      {/* <Footer/> */}
+      <Brands/>
+      <Footer/>
      </div>
   
   );
