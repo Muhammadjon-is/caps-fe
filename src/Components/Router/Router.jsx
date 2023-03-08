@@ -51,7 +51,7 @@ const RoutersApi = [
     },
     {
         id:9,
-        path:"/single",
+        path:"/products/:id",
         element:<SingleProduct/>
     }
   

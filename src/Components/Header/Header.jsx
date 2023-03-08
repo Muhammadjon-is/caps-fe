@@ -50,6 +50,7 @@ const Header = () => {
                     </p>
                     </Link>
                     <Link to='cart'> MyCart</Link>
+                   
                   </div>
                 </div>
               </div>
