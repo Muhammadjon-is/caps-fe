@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-// import ReactStars from "react-rating-stars-component";
-// import ProductCard from "../OurStore/ProductCard";
-// import ReactImageZoom from "react-image-zoom";
-// import { TbGitCompare } from "react-icons/tb";
-// import { AiOutlineHeart } from "react-icons/ai";
-// import laptop from "../../assets/gamingLaptop2.png"
-// import Meta from "../Login.jsx/Meta";
-// import Crumb from "../Login.jsx/Crumb";
-// import LoginContainer from "../Login.jsx/LoginContainer";
+
 import  "./SingleProduct.css"
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../LoadingError/Loading";
@@ -18,7 +10,6 @@ import Rating from "../OurStore/Rating";
 import { createProductReview, listProductDetails } from "../Redux/Actions/productAction";
 
 import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/productConstant";
-import LoginContainer from "../Login.jsx/LoginContainer";
 
 const SingleProduct = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -64,7 +55,6 @@ const SingleProduct = ({ history, match }) => {
   };
   return (
     <>
-      <LoginContainer />
       <div className="container single-product">
         {loading ? (
           <Loading />

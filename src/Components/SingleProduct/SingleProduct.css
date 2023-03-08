@@ -30,7 +30,7 @@
   }
   .product-dtl p {
     line-height: 24px;
-    color: #7a7a7a;
+    color: orange;
   }
   .product-count {
     border: 2px solid #f3f3f3;
@@ -39,7 +39,7 @@
   }
   .product-count .flex-box {
     padding: 15px 25px;
-    border-bottom: 2px solid #f3f3f3;
+    border-bottom: 2px solid #d23b3b;
   }
   .product-count .flex-box h6 {
     font-size: 16px;
@@ -70,5 +70,6 @@
   }
   .round-black-btn:hover,
   .round-black-btn:focus {
-    background: #1cb803;
+    background: #615e5e;
+    color: white;
   }
