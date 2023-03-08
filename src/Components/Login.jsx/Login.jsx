@@ -1,11 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState  } from "react";
+import { Link, useParams } from "react-router-dom";
 import Crumb from "./Crumb";
 import Meta from "./Meta";
 import LoginContainer from "./LoginContainer";
 import LoginInput from "./LoginIput";
-import './Login.css'
-const Login = () => {
+import Loading from "../LoadingError/Loading";
+import { login } from "../Redux/Actions/userAction";
+import Message from "../LoadingError/Error";
+import { useDispatch, useSelector } from "react-redux";
+import "./Login.css";
+const Login = ({history}) => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const redirect = useParams()
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [userInfo, history, redirect]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
+  };
+
+
   return (
     <>
       <Meta title={"Login"} />
@@ -16,16 +43,23 @@ const Login = () => {
           <div className="col-12">
             <div className="auth-card">
               <h3 className="text-center mb-3">Login</h3>
-              <form action="" className="d-flex flex-column gap-15">
-                <LoginInput type="email" name="email" placeholder="Email" />
-                <LoginInput
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <div>
-                
+              {error && <Message variant="alert-danger">{error}</Message>}
+        {loading && <Loading />}
+              <form action="" className="d-flex flex-column gap-15" onSubmit={submitHandler}>
 
+              <LoginInput
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <LoginInput
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+                <div>
                   <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                     <button className="button border-0" type="submit">
                       Login
