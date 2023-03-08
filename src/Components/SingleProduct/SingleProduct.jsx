@@ -9,7 +9,7 @@ import { Link, useParams } from "react-router-dom";
 // import Meta from "../Login.jsx/Meta";
 // import Crumb from "../Login.jsx/Crumb";
 // import LoginContainer from "../Login.jsx/LoginContainer";
-
+import  "./SingleProduct.css"
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../LoadingError/Loading";
 import  moment from "moment"
