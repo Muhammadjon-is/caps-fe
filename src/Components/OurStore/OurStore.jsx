@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
@@ -8,17 +8,9 @@ import gaming2 from "../../assets/gamingPc1.png"
 import "./OurStore.css"
 import ProductCard from "./ProductCard";
 const OurStore = () => {
-  const [products, setProducts] = useState([])
   const [grid, setGrid] = useState(4);
 
-  useEffect(() => {
-    const fetchData = async() => {
-      const response = await fetch("./Products.json");
-      const data = await response.json()
-      setProducts(data.products)
-    }
-    fetchData()
-  }, [])
+ 
 
 
   return (

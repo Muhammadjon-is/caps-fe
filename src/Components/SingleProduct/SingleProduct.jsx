@@ -1,342 +1,221 @@
-import React, { useState } from "react";
-import ReactStars from "react-rating-stars-component";
-import ProductCard from "../OurStore/ProductCard";
-import ReactImageZoom from "react-image-zoom";
-import { TbGitCompare } from "react-icons/tb";
-import { AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import laptop from "../../assets/gamingLaptop2.png"
-import Meta from "../Login.jsx/Meta";
-import Crumb from "../Login.jsx/Crumb";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+// import ReactStars from "react-rating-stars-component";
+// import ProductCard from "../OurStore/ProductCard";
+// import ReactImageZoom from "react-image-zoom";
+// import { TbGitCompare } from "react-icons/tb";
+// import { AiOutlineHeart } from "react-icons/ai";
+// import laptop from "../../assets/gamingLaptop2.png"
+// import Meta from "../Login.jsx/Meta";
+// import Crumb from "../Login.jsx/Crumb";
+// import LoginContainer from "../Login.jsx/LoginContainer";
+
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../LoadingError/Loading";
+import  moment from "moment"
+import Message from "../LoadingError/Error";
+import Rating from "../OurStore/Rating";
+import { createProductReview, listProductDetails } from "../Redux/Actions/productAction";
+
+import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/productConstant";
 import LoginContainer from "../Login.jsx/LoginContainer";
 
-const SingleProduct = () => {
-  const props = {
-    width: 594,
-    height: 600,
-    zoomWidth: 600,
+const SingleProduct = ({ history, match }) => {
+  const [qty, setQty] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
 
-    img:"https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-  };
+  const productId = useParams().id
+  const dispatch = useDispatch();
 
-  const [orderedProduct, setorderedProduct] = useState(true);
-  const copyToClipboard = (text) => {
-    console.log("text", text);
-    var textField = document.createElement("textarea");
-    textField.innerText = text;
-    document.body.appendChild(textField);
-    textField.select();
-    document.execCommand("copy");
-    textField.remove();
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, error, product } = productDetails;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const productReviewCreate = useSelector((state) => state.productReviewCreate);
+  const {
+    loading: loadingCreateReview,
+    error: errorCreateReview,
+    success: successCreateReview,
+  } = productReviewCreate;
+
+  useEffect(() => {
+    if (successCreateReview) {
+      alert("Review Submitted");
+      setRating(0);
+      setComment("");
+      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+    }
+    dispatch(listProductDetails(productId));
+  }, [dispatch, productId, successCreateReview]);
+
+  const AddToCartHandle = (e) => {
+    e.preventDefault();
+    history.push(`/cart/${productId}?qty=${qty}`);
   };
-  const closeModal = () => {};
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      createProductReview(productId, {
+        rating,
+        comment,
+      })
+    );
+  };
   return (
     <>
-      <Meta title={"Product Name"} />
-      <Crumb title="Product Name" />
-      <LoginContainer class1="main-product-wrapper py-5 home-wrapper-2">
-        <div className="row">
-          <div className="col-6">
-            <div className="main-product-image">
-              <div>
-                <ReactImageZoom {...props} />
+      <LoginContainer />
+      <div className="container single-product">
+        {loading ? (
+          <Loading />
+        ) : error ? (
+          <Message variant="alert-danger">{error}</Message>
+        ) : (
+          <>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="single-image">
+                  <img src={product.image} alt={product.name} />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="product-dtl">
+                  <div className="product-info">
+                    <div className="product-name">{product.name}</div>
+                  </div>
+                  <p>{product.description}</p>
+
+                  <div className="product-count col-lg-7 ">
+                    <div className="flex-box d-flex justify-content-between align-items-center">
+                      <h6>Price</h6>
+                      <span>${product.price}</span>
+                    </div>
+                    <div className="flex-box d-flex justify-content-between align-items-center">
+                      <h6>Status</h6>
+                      {product.countInStock > 0 ? (
+                        <span>In Stock</span>
+                      ) : (
+                        <span>unavailable</span>
+                      )}
+                    </div>
+                    <div className="flex-box d-flex justify-content-between align-items-center">
+                      <h6>Reviews</h6>
+                      <Rating
+                        value={product.rating}
+                        text={`${product.numReviews} reviews`}
+                      />
+                    </div>
+                    {product.countInStock > 0 ? (
+                      <>
+                        <div className="flex-box d-flex justify-content-between align-items-center">
+                          <h6>Quantity</h6>
+                          <select
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </select>
+                        </div>
+                        <button
+                          onClick={AddToCartHandle}
+                          className="round-black-btn"
+                        >
+                          Add To Cart
+                        </button>
+                      </>
+                    ) : null}
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="other-product-images d-flex flex-wrap gap-15">
-              <div>
-                <img
-                  src={laptop}
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  src={laptop}
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  src={laptop}
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  src={laptop}
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-          <div className="col-6">
-            <div className="main-product-details">
-              <div className="border-bottom">
-                <h3 className="title">
-                Asus Laptop
-                </h3>
-              </div>
-              <div className="border-bottom py-3">
-                <p className="price">$ 1200</p>
-                <div className="d-flex align-items-center gap-10">
-                  <ReactStars
-                    count={5}
-                    size={24}
-                    value={4}
-                    edit={false}
-                    activeColor="#ffd700"
-                  />
-                  <p className="mb-0 t-review">( 2 Reviews )</p>
-                </div>
-                <a className="review-btn" href="#review">
-                  Write a Review
-                </a>
-              </div>
-              <div className=" py-3">
-                <div className="d-flex gap-10 align-items-center my-2">
-                  <h3 className="product-heading">Type :</h3>
-                  <p className="product-data">Gaming</p>
-                </div>
-                <div className="d-flex gap-10 align-items-center my-2">
-                  <h3 className="product-heading">Brand :</h3>
-                  <p className="product-data">Asus</p>
-                </div>
-                <div className="d-flex gap-10 align-items-center my-2">
-                  <h3 className="product-heading">Category :</h3>
-                  <p className="product-data">Gaming</p>
-                </div>
-               
-                <div className="d-flex gap-10 align-items-center my-2">
-                  <h3 className="product-heading">Availablity :</h3>
-                  <p className="product-data">In Stock</p>
-                </div>
-            
-                
-                <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
-                  <h3 className="product-heading">Quantity :</h3>
-                  <div className="">
-                    <input
-                      type="number"
-                      name=""
-                      min={1}
-                      max={10}
-                      className="form-control"
-                      style={{ width: "70px" }}
-                      id=""
-                    />
-                  </div>
-                  <div className="d-flex align-items-center gap-30 ms-5">
-                    <button
-                      className="button border-0"
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
-                      type="button"
-                    >
-                      Add to Cart
-                    </button>
-                    <button className="button signup">Buy It Now</button>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center gap-15">
-                  <div>
-                    <a href="">
-                      <TbGitCompare className="fs-5 me-2" /> Add to Compare
-                    </a>
-                  </div>
-                  <div>
-                    <a href="">
-                      <AiOutlineHeart className="fs-5 me-2" /> Add to Wishlist
-                    </a>
-                  </div>
-                </div>
-                <div className="d-flex gap-10 flex-column  my-3">
-                  <h3 className="product-heading">Shipping & Returns :</h3>
-                  <p className="product-data">
-                    Free shipping and returns available on all orders! <br /> We
-                    ship all US domestic orders within
-                    <b>5-10 business days!</b>
-                  </p>
-                </div>
-                <div className="d-flex gap-10 align-items-center my-3">
-                  <h3 className="product-heading">Product Link:</h3>
-                  <a
-                    href="javascript:void(0);"
-                    onClick={() => {
-                      copyToClipboard(
-                        {laptop}
-                      );
-                    }}
+
+            {/* RATING */}
+            <div className="row my-5">
+              <div className="col-md-6">
+                <h6 className="mb-3">REVIEWS</h6>
+                {product.reviews.length === 0 && (
+                  <Message variant={"alert-info mt-3"}>No Reviews</Message>
+                )}
+                {product.reviews.map((review) => (
+                  <div
+                    key={review._id}
+                    className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded"
                   >
-                    Copy Product Link
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </LoginContainer>
-      <LoginContainer class1="description-wrapper py-5 home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h4>Description</h4>
-            <div className="bg-white p-3">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Tenetur nisi similique illum aut perferendis voluptas, quisquam
-                obcaecati qui nobis officia. Voluptatibus in harum deleniti
-                labore maxime officia esse eos? Repellat?
-              </p>
-            </div>
-          </div>
-        </div>
-      </LoginContainer>
-      <LoginContainer class1="reviews-wrapper home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h3 id="review">Reviews</h3>
-            <div className="review-inner-wrapper">
-              <div className="review-head d-flex justify-content-between align-items-end">
-                <div>
-                  <h4 className="mb-2">Customer Reviews</h4>
-                  <div className="d-flex align-items-center gap-10">
-                    <ReactStars
-                      count={5}
-                      size={24}
-                      value={4}
-                      edit={false}
-                      activeColor="#ffd700"
-                    />
-                    <p className="mb-0">Based on 2 Reviews</p>
+                    <strong>{review.name}</strong>
+                    <Rating value={review.rating} />
+                    <span>{moment(review.createdAt).calendar()}</span>
+                    <div className="alert alert-info mt-3">
+                      {review.comment}
+                    </div>
                   </div>
+                ))}
+              </div>
+              <div className="col-md-6">
+                <h6>WRITE A CUSTOMER REVIEW</h6>
+                <div className="my-4">
+                  {loadingCreateReview && <Loading />}
+                  {errorCreateReview && (
+                    <Message variant="alert-danger">
+                      {errorCreateReview}
+                    </Message>
+                  )}
                 </div>
-                {orderedProduct && (
-                  <div>
-                    <a className="text-dark text-decoration-underline" href="">
-                      Write a Review
-                    </a>
+                {userInfo ? (
+                  <form onSubmit={submitHandler}>
+                    <div className="my-4">
+                      <strong>Rating</strong>
+                      <select
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}
+                        className="col-12 bg-light p-3 mt-2 border-0 rounded"
+                      >
+                        <option value="">Select...</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="5">5 - Excellent</option>
+                      </select>
+                    </div>
+                    <div className="my-4">
+                      <strong>Comment</strong>
+                      <textarea
+                        row="3"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        className="col-12 bg-light p-3 mt-2 border-0 rounded"
+                      ></textarea>
+                    </div>
+                    <div className="my-3">
+                      <button
+                        disabled={loadingCreateReview}
+                        className="col-12 bg-black border-0 p-3 rounded text-white"
+                      >
+                        SUBMIT
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <div className="my-3">
+                    <Message variant={"alert-warning"}>
+                      Please{" "}
+                      <Link to="/login">
+                        " <strong>Login</strong> "
+                      </Link>{" "}
+                      to write a review{" "}
+                    </Message>
                   </div>
                 )}
               </div>
-              <div className="review-form py-4">
-                <h4>Write a Review</h4>
-                <form action="" className="d-flex flex-column gap-15">
-                  <div>
-                    <ReactStars
-                      count={5}
-                      size={24}
-                      value={4}
-                      edit={true}
-                      activeColor="#ffd700"
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      name=""
-                      id=""
-                      className="w-100 form-control"
-                      cols="30"
-                      rows="4"
-                      placeholder="Comments"
-                    ></textarea>
-                  </div>
-                  <div className="d-flex justify-content-end">
-                    <button className="button border-0">Submit Review</button>
-                  </div>
-                </form>
-              </div>
-              <div className="reviews mt-4">
-                <div className="review">
-                  <div className="d-flex gap-10 align-items-center">
-                    <h6 className="mb-0">Navdeep</h6>
-                    <ReactStars
-                      count={5}
-                      size={24}
-                      value={4}
-                      edit={false}
-                      activeColor="#ffd700"
-                    />
-                  </div>
-                  <p className="mt-3">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Consectetur fugit ut excepturi quos. Id reprehenderit
-                    voluptatem placeat consequatur suscipit ex. Accusamus dolore
-                    quisquam deserunt voluptate, sit magni perspiciatis quas
-                    iste?
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </LoginContainer>
-      <LoginContainer class1="popular-wrapper py-5 home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Our Popular Products</h3>
-          </div>
-        </div>
-        <div className="row">
-          <ProductCard />
-        </div>
-      </LoginContainer>
-
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered ">
-          <div className="modal-content">
-            <div className="modal-header py-0 border-0">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body py-0">
-              <div className="d-flex align-items-center">
-                <div className="flex-grow-1 w-50">
-                  <img src={laptop} className="img-fluid" alt="product imgae" />
-                </div>
-                <div className="d-flex flex-column flex-grow-1 w-50">
-                  <h6 className="mb-3">Apple Watch</h6>
-                  <p className="mb-1">Quantity: asgfd</p>
-                  <p className="mb-1">Color: asgfd</p>
-                  <p className="mb-1">Size: asgfd</p>
-                </div>
-              </div>
-            </div>
-            <div className="modal-footer border-0 py-0 justify-content-center gap-30">
-              <button type="button" className="button" data-bs-dismiss="modal">
-                View My Cart
-              </button>
-              <button type="button" className="button signup">
-                Checkout
-              </button>
-            </div>
-            <div className="d-flex justify-content-center py-3">
-              <Link
-                className="text-dark"
-                to="/product"
-                onClick={() => {
-                  closeModal();
-                }}
-              >
-                Continue To Shopping
-              </Link>
-            </div>
-          </div>
-        </div>
+          </>
+        )}
       </div>
     </>
   );

@@ -5,20 +5,20 @@ import {
   productCreateReviewReducer,
   productDetailsReducer,
   productListReducer,
-} from "./Reducers/ProductReducers";
-import { cartReducer } from "./Reducers/CartReducers";
+} from "./Reducers/productReducer";
+import { cartReducer } from "./Reducers/cartReducer";
 import {
   userDetailsReducer,
   userLoginReducer,
   userRegisterReducer,
   userUpdateProfileReducer,
-} from "./Reducers/userReducers";
+} from "./Reducers/userReducer";
 import {
   orderCreateReducer,
   orderDetailsReducer,
   orderListMyReducer,
   orderPayReducer,
-} from "./Reducers/OrderReducres";
+} from "./Reducers/orderReducer";
 
 const reducer = combineReducers({
   productList: productListReducer,

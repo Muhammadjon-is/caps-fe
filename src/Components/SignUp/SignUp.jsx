@@ -17,11 +17,7 @@ const SignUp = () => {
               <form action="" className="d-flex flex-column gap-15">
                 <LoginInput type="text" name="name" placeholder="Name" />
                 <LoginInput type="email" name="email" placeholder="Email" />
-                <LoginInput
-                  type="tel"
-                  name="mobile"
-                  placeholder="Mobile Number"
-                />
+               
                 <LoginInput
                   type="password"
                   name="password"
