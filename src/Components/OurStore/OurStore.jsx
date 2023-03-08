@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
@@ -8,7 +8,19 @@ import gaming2 from "../../assets/gamingPc1.png"
 import "./OurStore.css"
 import ProductCard from "./ProductCard";
 const OurStore = () => {
+  const [products, setProducts] = useState([])
   const [grid, setGrid] = useState(4);
+
+  useEffect(() => {
+    const fetchData = async() => {
+      const response = await fetch("./Products.json");
+      const data = await response.json()
+      setProducts(data.products)
+    }
+    fetchData()
+  }, [])
+
+
   return (
     <>
       <Meta title={"Our Store"} />
@@ -165,13 +177,12 @@ const OurStore = () => {
                     <option value="manual">Featured</option>
                     <option value="best-selling">Best selling</option>
                     <option value="title-ascending">Alphabetically, A-Z</option>
-                    <option value="title-descending">
+                    <option value="title-descending">  
                       Alphabetically, Z-A
                     </option>
                     <option value="price-ascending">Price, low to high</option>
                     <option value="price-descending">Price, high to low</option>
-                    <option value="created-ascending">Date, old to new</option>
-                    <option value="created-descending">Date, new to old</option>
+                 
                   </select>
                 </div>
                 <div className="d-flex align-items-center gap-10">

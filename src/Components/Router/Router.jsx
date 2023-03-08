@@ -6,6 +6,7 @@ import Login from "../Login.jsx/Login"
 import SignUp from "../SignUp/SignUp"
 import OurStore from "../OurStore/OurStore"
 import Checkout from "../Checkout/Checkout"
+import SingleProduct from "../SingleProduct/SingleProduct"
 
 const RoutersApi = [
     {
@@ -48,6 +49,11 @@ const RoutersApi = [
         path:"/checkout",
         element:<Checkout/>
     },
+    {
+        id:9,
+        path:"/single",
+        element:<SingleProduct/>
+    }
   
 ]
 
