@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-// import ReactStars from "react-rating-stars-component";
-// import gamingLaptop from "../../assets/gamingLaptop1.png";
-// import prodcompare from "../../assets/prodcompare.svg";
-// import addcart from "../../assets/add-cart.svg";
-// import view from "../../assets/view.svg";
-// import wish from "../../assets/wish.svg";
-// import { useLocation } from "react-router-dom";
+
 import Pagination from "./Pagination";
 import Message from "../LoadingError/Error";
 import Loading from "../LoadingError/Loading";

@@ -12,7 +12,7 @@ const Header = () => {
           <div className="row align-items-center">
             <div className="col-2">
               <h2>
-                <Link className="main-logo" to="/">Electronic Products</Link>
+                <Link className="main-logo navbar-brand" to="/">   <img alt="logo" src="/images/logo.png" /></Link>
               </h2>
             </div>
             <div className="col-5">
@@ -52,6 +52,30 @@ const Header = () => {
                     <Link to='cart'> MyCart</Link>
                    
                   </div>
+                  <div className="btn-group">
+                      <button
+                        type="button"
+                        className="name-button dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i class="fas fa-user"></i>
+                      </button>
+                      <div className="dropdown-menu">
+                        <Link className="dropdown-item" to="/profile">
+                          Profile
+                        </Link>
+
+                        <Link
+                          className="dropdown-item"
+                          to="#"
+                          
+                        >
+                          Logout
+                        </Link>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>

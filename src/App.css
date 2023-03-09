@@ -197,7 +197,9 @@ a {
 .home-wrapper-2 {
   background-color: var(--color-f5f5f7);
 }
-
+.navbar-brand img {
+  width: 60%;
+}
 /* home wrapper 2 ends */
 
 /* categories section */
