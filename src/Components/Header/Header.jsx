@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import {  Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 
 import "./Header.css"
 const Header = () => {
+  const [keyword, setKeyword] = useState()
   return (
     <>
     
