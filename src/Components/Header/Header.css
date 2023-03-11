@@ -16,8 +16,9 @@
     background-color: #111111;
     color: orange;
   }
-  .main-logo{
+  .main-logo img{
     color: orange;
+    width: 60px;
   }
   .header-upper .input-group-text:hover{
     cursor: pointer;
