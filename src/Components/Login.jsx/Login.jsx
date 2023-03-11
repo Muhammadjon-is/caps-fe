@@ -10,7 +10,7 @@ import { login } from "../Redux/Actions/userAction";
 import Message from "../LoadingError/Error";
 import { useDispatch, useSelector } from "react-redux";
 import "./Login.css";
-const Login = ({history}) => {
+const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const Login = ({history}) => {
     if (userInfo) {
       navigate(redirect);
     }
-  }, [userInfo, history, redirect]);
+  }, [userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
