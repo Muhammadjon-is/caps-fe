@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate,  } from "react-router-dom";
 
 import  "./SingleProduct.css"
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const SingleProduct = ({ history, match }) => {
 
   const productId = useParams().id
   const dispatch = useDispatch();
-
+const navigate = useNavigate()
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const userLogin = useSelector((state) => state.userLogin);
@@ -42,7 +42,7 @@ const SingleProduct = ({ history, match }) => {
 
   const AddToCartHandle = (e) => {
     e.preventDefault();
-    history.push(`/cart/${productId}?qty=${qty}`);
+   navigate(`/cart/${productId}?qty=${qty}`);
   };
   const submitHandler = (e) => {
     e.preventDefault();
