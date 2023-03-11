@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import { savePaymentMethod } from '../Redux/Actions/cartAction'
 
 
-const Payment = ({history}) => {
+const Payment = () => {
 
     const cart = useSelector((state) => state.cart);
     const {shippingAddress} = cart;
+    const navigate = useNavigate()
    
     if(!shippingAddress){
-        history.push("/shipping");
+        navigate("/shipping");
     }
 
     const [paymentMethod, setPaymentMethod] = useState("Paypal")
@@ -19,7 +21,7 @@ const Payment = ({history}) => {
     const submitHandler = (e) => {
         e.prevenetDefault();
         dispatch(savePaymentMethod(paymentMethod));
-        history.push("/placeorder")
+        navigate("/placeorder")
     }
   
   return (

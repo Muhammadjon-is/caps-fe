@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState  } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Crumb from "./Crumb";
 import Meta from "./Meta";
 import LoginContainer from "./LoginContainer";
@@ -17,13 +17,14 @@ const Login = ({history}) => {
 
   const dispatch = useDispatch();
   const redirect = useParams()
+  const navigate = useNavigate()
 
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      navigate(redirect);
     }
   }, [userInfo, history, redirect]);
 

@@ -25,7 +25,7 @@ const navigate = useNavigate()
     if (userInfo) {
       navigate(redirect);
     }
-  }, [userInfo, history, redirect]);
+  }, [userInfo,  redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();

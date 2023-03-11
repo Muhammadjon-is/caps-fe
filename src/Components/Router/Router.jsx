@@ -8,6 +8,8 @@ import OurStore from "../OurStore/OurStore"
 import Checkout from "../Checkout/Checkout"
 import SingleProduct from "../SingleProduct/SingleProduct"
 import Payment from "../Payment/Payment"
+// import Header from "../Header/Header"
+import ProductCard from "../OurStore/ProductCard"
 
 const RoutersApi = [
     {
@@ -59,6 +61,11 @@ const RoutersApi = [
         id:10,
         path:"/payment",
         element:<Payment/>
+    },
+    {
+        id:11,
+        path:"/search/:keyword",
+        element:<OurStore/>
     }
   
 ]

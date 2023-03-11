@@ -13,7 +13,20 @@ const Header = () => {
  const cart = useSelector((state) => state.cart)
  const {cartItems} = cart;
  const userLogin = useSelector((state) => state.userLogin);
- const { userInfo } = userLogin
+ const { userInfo } = userLogin;
+
+ const logoutHandler = () => {
+  dispatch(logout());
+ };
+
+ const submitHandler = (e) => {
+  e.preventDefault();
+  if(keyword.trim()) {
+    navigate(`/search/${keyword}`)
+  } else {
+    navigate("/")
+  }
+ }
 
   return (
     <>
@@ -27,18 +40,32 @@ const Header = () => {
               </h2>
             </div>
             <div className="col-5">
-              <div className="input-group">
+              {/* <div className="input-group">
                 <input
                   type="text"
                   className="form-control py-2"
                   placeholder="Search Product Here..."
                   aria-label="Search Product Here..."
                   aria-describedby="basic-addon2"
+                  onChange={(e) => setKeyword(e.target.value)}
                 />
                 <span className="input-group-text p-3" id="basic-addon2">
-                  <BsSearch className="fs-6" />
+                  <BsSearch className="fs-6" onSubmit={submitHandler}  />
                 </span>
-              </div>
+              </div> */}
+                  <div className="col-12 d-flex align-items-center">
+                  <form onSubmit={submitHandler} className="input-group">
+                    <input
+                      type="search"
+                      className="form-control rounded search"
+                      placeholder="Search"
+                      onChange={(e) => setKeyword(e.target.value)}
+                    />
+                    <button type="submit" className="search-button">
+                      search
+                    </button>
+                  </form>
+                </div>
             </div>
             <div className="col-5">
           
@@ -60,9 +87,15 @@ const Header = () => {
                       Log in <br /> My Account
                     </p>
                     </Link>
-                    <Link to='cart'> MyCart</Link>
+                    <Link to='cart'> 
+                    <i className="fas fa-shopping-bag"></i>
+                    <span className="badge">{cartItems.length}</span>
+                   </Link>
                    
                   </div>
+                  {userInfo ? (
+
+                 
                   <div className="btn-group">
                       <button
                         type="button"
@@ -87,7 +120,35 @@ const Header = () => {
                         </Link>
                       </div>
                     </div>
+                     ) : (
+                      <div className="btn-group">
+                      <button
+                        type="button"
+                        className="name-button dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i class="fas fa-user"></i>
+                      </button>
+                      <div className="dropdown-menu">
+                        <Link className="dropdown-item" to="/login">
+                          Login
+                        </Link>
+
+                        <Link className="dropdown-item" to="/register">
+                          Register
+                        </Link>
+                      </div>
+                    </div>
+                     )}
                 </div>
+{/*   
+                <Link to="/cart" className="cart-mobile-icon">
+                    <i className="fas fa-shopping-bag"></i>
+                    <span className="badge">{cartItems.length}</span>
+                  </Link> */}
+
               </div>
             </div>
           </div>
