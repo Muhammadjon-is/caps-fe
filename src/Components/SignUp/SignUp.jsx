@@ -2,9 +2,9 @@ import React from "react";
 import Crumb from "../Login.jsx/Crumb";
 import Meta from "../Login.jsx/Meta";
 import LoginContainer from "../Login.jsx/LoginContainer";
-import LoginInput from "../Login.jsx/LoginIput";
+// import LoginInput from "../Login.jsx/LoginIput";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { register } from "../Redux/Actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../LoadingError/Error";
@@ -14,7 +14,7 @@ const SignUp = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+const navigate = useNavigate()
   const dispatch = useDispatch();
   const redirect = useParams();
 
@@ -23,7 +23,7 @@ const SignUp = ({ history }) => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      navigate(redirect);
     }
   }, [userInfo, history, redirect]);
 
