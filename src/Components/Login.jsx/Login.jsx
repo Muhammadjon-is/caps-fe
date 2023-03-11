@@ -15,18 +15,21 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+ 
   const dispatch = useDispatch();
-  const redirect = useParams()
   const navigate = useNavigate()
+  // const { id } = useParams()
+  // const redirect = id ? `/${id}` : "/"; 
 
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
 
-  useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
-    }
-  }, [userInfo, redirect]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     navigate(redirect);
+  //     console.log(redirect);
+  //   }
+  // }, [userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();

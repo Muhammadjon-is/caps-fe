@@ -14,7 +14,7 @@ import {
   } from "../Constants/orderConstant";
   import axios from "axios";
   import { CART_CLEAR_ITEMS } from "../Constants/cartContstant";
-  import { logout } from "./userActions";
+  import { logout } from "./userAction";
   
   // CREATE ORDER
   export const createOrder = (order) => async (dispatch, getState) => {

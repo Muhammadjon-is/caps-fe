@@ -14,18 +14,19 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const navigate = useNavigate()
+// const navigate = useNavigate()
   const dispatch = useDispatch();
-  const redirect = useParams();
+  // const { id } = useParams()
+  // const redirect = id ? `/${id}` : "/"; 
 
   const userRegister = useSelector((state) => state.userRegister);
   const { error, loading, userInfo } = userRegister;
 
-  useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
-    }
-  }, [userInfo,  redirect]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     navigate(redirect);
+  //   }
+  // }, [userInfo,  redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -71,9 +72,9 @@ const navigate = useNavigate()
                   <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                     <button className="button border-0">Sign Up</button>
                     <p>
-            <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+            {/* <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
               I Have Account <strong>Login</strong>
-            </Link>
+            </Link> */}
           </p>
                   </div>
                 </div>
