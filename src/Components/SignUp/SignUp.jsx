@@ -49,25 +49,24 @@ const SignUp = ({ history }) => {
                 className="d-flex flex-column gap-15"
                 onSubmit={submitHandler}
               >
-                <LoginInput
-                  type="text"
-                  placeholder="Username"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <LoginInput
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <LoginInput
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+            <input
+            type="text"
+            placeholder="Username"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
                 <div>
                   <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                     <button className="button border-0">Sign Up</button>
