@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import {  Link } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
-
+import { logout } from "../Redux/Actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
 import "./Header.css"
 const Header = () => {
   const [keyword, setKeyword] = useState()
+   const dispatch = useDispatch
+ const navigate = useNavigate()
+
+
+ const cart = useSelector((state) => state.cart)
+ const {cartItems} = cart;
+ const userLogin = useSelector((state) => state.userLogin);
+ const { userInfo } = userLogin
+
   return (
     <>
     
