@@ -42,7 +42,7 @@ const OurStore = () => {
   //   setFilteredProducts(filtered);
   // };
 
-
+// !Sort data min max price
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(9999);
   const [products, setProducts] = useState([]);
@@ -64,6 +64,8 @@ const OurStore = () => {
   };
 
 
+
+  // !Sort products from low to high prices in React
 
   return (
     <>
