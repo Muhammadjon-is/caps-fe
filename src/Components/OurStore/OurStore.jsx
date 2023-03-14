@@ -1,16 +1,47 @@
-import React, {  useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
 import Meta from "./Meta";
-import gr2 from "../../assets/gr.svg"
-import gaming2 from "../../assets/gamingPc1.png"
-import "./OurStore.css"
+import gr2 from "../../assets/gr.svg";
+import gaming2 from "../../assets/gamingPc1.png";
+import "./OurStore.css";
 import ProductCard from "./ProductCard";
 const OurStore = () => {
   const [grid, setGrid] = useState(4);
 
  
+  // ! Sort data by category
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+
+  useEffect(() => {
+    // Fetch products from API or database and set the products state
+    // ...
+    setProducts(productsData);
+    setFilteredProducts(productsData);
+  }, []);
+
+  const handleMinPriceChange = (event) => {
+    setMinPrice(event.target.value);
+    filterProductsByPrice(event.target.value, maxPrice);
+  };
+
+  const handleMaxPriceChange = (event) => {
+    setMaxPrice(event.target.value);
+    filterProductsByPrice(minPrice, event.target.value);
+  };
+
+  const filterProductsByPrice = (min, max) => {
+    const filtered = products.filter((product) => {
+      return product.price >= min && product.price <= max;
+    });
+    setFilteredProducts(filtered);
+  };
+
+
 
 
   return (
@@ -80,8 +111,6 @@ const OurStore = () => {
                     <label htmlFor="floatingInput1">To</label>
                   </div>
                 </div>
-               
-              
               </div>
             </div>
             <div className="filter-card mb-3">
@@ -108,16 +137,10 @@ const OurStore = () => {
               <div>
                 <div className="random-products mb-3 d-flex">
                   <div className="w-50">
-                    <img
-                      src={gaming2}
-                      className="img-fluid"
-                      alt="watch"
-                    />
+                    <img src={gaming2} className="img-fluid" alt="watch" />
                   </div>
                   <div className="w-50">
-                    <h5>
-                    The Best Gaming Laptops Ever
-                    </h5>
+                    <h5>The Best Gaming Laptops Ever</h5>
                     <ReactStars
                       count={5}
                       size={24}
@@ -130,16 +153,10 @@ const OurStore = () => {
                 </div>
                 <div className="random-products d-flex">
                   <div className="w-50">
-                    <img
-                      src={gaming2}
-                      className="img-fluid"
-                      alt="watch"
-                    />
+                    <img src={gaming2} className="img-fluid" alt="watch" />
                   </div>
                   <div className="w-50">
-                    <h5>
-                    The Best Gaming Laptops Ever
-                    </h5>
+                    <h5>The Best Gaming Laptops Ever</h5>
                     <ReactStars
                       count={5}
                       size={24}
@@ -168,10 +185,9 @@ const OurStore = () => {
                   >
                     <option value="manual">Featured</option>
                     <option value="best-selling">Best selling</option>
-                 
+
                     <option value="price-ascending">Price, low to high</option>
                     <option value="price-descending">Price, high to low</option>
-                 
                   </select>
                 </div>
                 <div className="d-flex align-items-center gap-10">
@@ -217,7 +233,7 @@ const OurStore = () => {
             <div className="products-list pb-5">
               <div className="d-flex gap-10 flex-wrap">
                 {/* <ProductCard grid={grid} /> */}
-                <ProductCard grid={grid}/>
+                <ProductCard grid={grid} />
               </div>
             </div>
           </div>
@@ -227,4 +243,4 @@ const OurStore = () => {
   );
 };
 
-export default OurStore
+export default OurStore;
