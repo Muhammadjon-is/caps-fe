@@ -7,6 +7,7 @@ import gr2 from "../../assets/gr.svg";
 import gaming2 from "../../assets/gamingPc1.png";
 import "./OurStore.css";
 import ProductCard from "./ProductCard";
+import axios from "axios";
 const OurStore = () => {
   const [grid, setGrid] = useState(4);
 
@@ -41,6 +42,26 @@ const OurStore = () => {
   //   setFilteredProducts(filtered);
   // };
 
+
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(9999);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axios.get(`products?min=${minValue}&max=${maxValue}`);
+      setProducts(response.data);
+    };
+    fetchProducts();
+  }, [minValue, maxValue]);
+
+  const handleMinChange = (event) => {
+    setMinValue(Number(event.target.value));
+  };
+
+  const handleMaxChange = (event) => {
+    setMaxValue(Number(event.target.value));
+  };
 
 
 
