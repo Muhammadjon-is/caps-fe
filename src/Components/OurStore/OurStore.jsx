@@ -11,35 +11,35 @@ const OurStore = () => {
   const [grid, setGrid] = useState(4);
 
  
-  // ! Sort data by Price
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  // // ! Sort data by Price
+  // const [products, setProducts] = useState([]);
+  // const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [minPrice, setMinPrice] = useState("");
+  // const [maxPrice, setMaxPrice] = useState("");
 
-  useEffect(() => {
-    // Fetch products from API or database and set the products state
-    // ...
-    setProducts(productsData);
-    setFilteredProducts(productsData);
-  }, []);
+  // useEffect(() => {
+  //   // Fetch products from API or database and set the products state
+  //   // ...
+  //   setProducts(productsData);
+  //   setFilteredProducts(productsData);
+  // }, []);
 
-  const handleMinPriceChange = (event) => {
-    setMinPrice(event.target.value);
-    filterProductsByPrice(event.target.value, maxPrice);
-  };
+  // const handleMinPriceChange = (event) => {
+  //   setMinPrice(event.target.value);
+  //   filterProductsByPrice(event.target.value, maxPrice);
+  // };
 
-  const handleMaxPriceChange = (event) => {
-    setMaxPrice(event.target.value);
-    filterProductsByPrice(minPrice, event.target.value);
-  };
+  // const handleMaxPriceChange = (event) => {
+  //   setMaxPrice(event.target.value);
+  //   filterProductsByPrice(minPrice, event.target.value);
+  // };
 
-  const filterProductsByPrice = (min, max) => {
-    const filtered = products.filter((product) => {
-      return product.price >= min && product.price <= max;
-    });
-    setFilteredProducts(filtered);
-  };
+  // const filterProductsByPrice = (min, max) => {
+  //   const filtered = products.filter((product) => {
+  //     return product.price >= min && product.price <= max;
+  //   });
+  //   setFilteredProducts(filtered);
+  // };
 
 
 
