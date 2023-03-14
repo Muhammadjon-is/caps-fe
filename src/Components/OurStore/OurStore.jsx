@@ -11,7 +11,7 @@ const OurStore = () => {
   const [grid, setGrid] = useState(4);
 
  
-  // ! Sort data by category
+  // ! Sort data by Price
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [minPrice, setMinPrice] = useState("");
