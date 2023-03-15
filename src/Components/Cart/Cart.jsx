@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
 import Meta from "../Login.jsx/Meta";
@@ -10,13 +10,13 @@ import { addToCart, removefromcart } from "../Redux/Actions/cartAction";
 
 
 import "./Cart.css"
-const Cart = ({history}) => {
+const Cart = () => {
 
 
   const dispatch = useDispatch();
   const productId = useParams()
   const qty = useParams()
-
+ const navigate = useNavigate()
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
@@ -29,7 +29,7 @@ const Cart = ({history}) => {
   }, [dispatch, productId, qty]);
 
   const checkOutHandler = () => {
-    history.push("/login?redirect=shipping");
+  navigate("/login?redirect=shipping");
   };
 
   const removeFromCartHandle = (id) => {
