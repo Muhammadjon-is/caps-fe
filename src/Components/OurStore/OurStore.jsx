@@ -11,7 +11,6 @@ import axios from "axios";
 const OurStore = () => {
   const [grid, setGrid] = useState(4);
 
- 
   // // ! Sort data by Price
   // const [products, setProducts] = useState([]);
   // const [filteredProducts, setFilteredProducts] = useState([]);
@@ -42,14 +41,16 @@ const OurStore = () => {
   //   setFilteredProducts(filtered);
   // };
 
-// !Sort data min max price
+  // !Sort data min max price
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(9999);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get(`products?min=${minValue}&max=${maxValue}`);
+      const response = await axios.get(
+        `products?min=${minValue}&max=${maxValue}`
+      );
       setProducts(response.data);
     };
     fetchProducts();
@@ -62,8 +63,6 @@ const OurStore = () => {
   const handleMaxChange = (event) => {
     setMaxValue(Number(event.target.value));
   };
-
-
 
   // !Sort products from low to high prices in React
 
@@ -117,19 +116,21 @@ const OurStore = () => {
                 <div className="d-flex align-items-center gap-10">
                   <div className="form-floating">
                     <input
-                      type="email"
                       className="form-control"
                       id="floatingInput"
                       placeholder="From"
+                      value={minValue}
+                    onChange={handleMinChange}
                     />
                     <label htmlFor="floatingInput">From</label>
                   </div>
                   <div className="form-floating">
                     <input
-                      type="email"
                       className="form-control"
                       id="floatingInput1"
                       placeholder="To"
+                      value={maxValue}
+                      onChange={handleMaxChange}
                     />
                     <label htmlFor="floatingInput1">To</label>
                   </div>
