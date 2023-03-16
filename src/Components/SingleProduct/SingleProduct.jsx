@@ -11,14 +11,14 @@ import { createProductReview, listProductDetails } from "../Redux/Actions/produc
 
 import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/productConstant";
 
-const SingleProduct = ({ history, match }) => {
+const SingleProduct = () => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const navigate = useNavigate()
 
   const productId = useParams().id
   const dispatch = useDispatch();
-const navigate = useNavigate()
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const userLogin = useSelector((state) => state.userLogin);
