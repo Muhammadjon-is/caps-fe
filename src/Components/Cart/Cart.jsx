@@ -31,7 +31,7 @@ const Cart = () => {
     navigate("/cart");
   };
 
-  const handleRemoveFromCart = (id) => {
+  const removeFromCartHandle = (id) => {
     dispatch(removefromcart(id));
   };
 
@@ -39,7 +39,7 @@ const Cart = () => {
     setQuantity(Number(e.target.value));
   };
 
-  const handleCheckout = () => {
+  const checkOutHandler = () => {
     navigate("/login", { state: { from: "shipping" } });
   };
 
