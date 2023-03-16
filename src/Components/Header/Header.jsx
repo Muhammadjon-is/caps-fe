@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {  Link, useNavigate } from "react-router-dom";
-import { BsSearch } from "react-icons/bs";
+// import { BsSearch } from "react-icons/bs"
 import { logout } from "../Redux/Actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.css"
