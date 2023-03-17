@@ -77,7 +77,6 @@ const Header = () => {
                 <div className="row">
                   <div className="col-12">
                     <div className="menu-bottom d-flex align-items-center gap-30">
-                      <div></div>
                       <div className="menu-links">
                         <div className="d-flex align-items-center gap-15">
                           <Link to="/">Home</Link>
@@ -94,8 +93,11 @@ const Header = () => {
                             <span className="badge">{cartItems.length}</span>
                           </Link>
                         </div>
+  
 
                         <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
+
+                          
                           {userInfo ? (
                             <div className="dropdown">
                               <button
@@ -117,10 +119,10 @@ const Header = () => {
                                   </Link>
                                 </li>
                                 <li>
-                                  {" "}
+                                
                                   <Link
                                     className="dropdown-item"
-                                    to="#"
+                                    to="/"
                                     onClick={logoutHandler}
                                   >
                                     Logout
@@ -138,18 +140,8 @@ const Header = () => {
                               </Link>
                             </>
                           )}
-
-                          {/* <Link to="/cart">
-                  <i className="fas fa-shopping-bag"></i>
-                  <span className="badge">{cartItems.length}</span>
-                </Link> */}
                         </div>
                       </div>
-                      {/*   
-                <Link to="/cart" className="cart-mobile-icon">
-                    <i className="fas fa-shopping-bag"></i>
-                    <span className="badge">{cartItems.length}</span>
-                  </Link> */}
                     </div>
                   </div>
                 </div>
