@@ -143,3 +143,18 @@ a {
   background-color: #1cb803;
   color: #ffffff;
 }
+
+/* orders */
+.link {
+  color: blue;
+  border-bottom: 1px solid blue;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+.link:hover {
+  color: blue;
+}
+.table-responsive {
+  width: 100%;
+}
+

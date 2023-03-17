@@ -9,9 +9,10 @@ import Checkout from "../Checkout/Checkout"
 import SingleProduct from "../SingleProduct/SingleProduct"
 import Payment from "../Payment/Payment"
 // import Header from "../Header/Header"
-import ProductCard from "../OurStore/ProductCard"
+// import ProductCard from "../OurStore/ProductCard"
 import OrderScreen from "../OrderScreen/OrderScreen"
-import ProfileTabs from "../ProfileTabs/ProfileTabs"
+// import ProfileTabs from "../ProfileTabs/ProfileTabs"
+import ProfileScreen from "../ProfileTabs/ProfileScreen"
 
 const RoutersApi = [
     {
@@ -77,7 +78,7 @@ const RoutersApi = [
     {
         id:13,
         path:"profile",
-        element:<ProfileTabs/>
+        element:<ProfileScreen/>
     }
   
 ]

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../LoadingError/Error";
-import Toast from "./../LoadingError/Toast";
+import Toast from "./../LoadingError/Toast"
 import Loading from "./../LoadingError/Loading";
 import { toast } from "react-toastify";
-import { updateUserProfile } from "../Redux/Actions/userAction";
+ import { updateUserProfile } from "../Redux/Actions/userAction";
 
 
 const ProfileTabs = () => {
