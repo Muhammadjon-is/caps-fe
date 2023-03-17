@@ -37,7 +37,7 @@ const RoutersApi = [
     },
     {
         id:5,
-        path:"/signUp",
+        path:"/register",
         element:<SignUp/>
     },
     {

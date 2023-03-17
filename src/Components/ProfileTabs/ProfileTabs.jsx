@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../LoadingError/Error";
 import Toast from "./../LoadingError/Toast"
 import Loading from "./../LoadingError/Loading";
-import { toast } from "react-toastify";
+import {  ToastContainer } from "react-toastify";
+// import { ToastContainer  } from "react-toastify";
  import { updateUserProfile } from "../Redux/Actions/userAction";
-
+const toast = ToastContainer
 
 const ProfileTabs = () => {
   const [name, setName] = useState("");
@@ -105,6 +106,7 @@ const ProfileTabs = () => {
           </div>
         </div>
         <button type="submit">Update Profile</button>
+        <ToastContainer/>
       </form>
     </>
   );
