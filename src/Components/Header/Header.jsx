@@ -93,11 +93,8 @@ const Header = () => {
                             <span className="badge">{cartItems.length}</span>
                           </Link>
                         </div>
-  
 
                         <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
-
-                          
                           {userInfo ? (
                             <div className="dropdown">
                               <button
@@ -119,7 +116,6 @@ const Header = () => {
                                   </Link>
                                 </li>
                                 <li>
-                                
                                   <Link
                                     className="dropdown-item"
                                     to="/"

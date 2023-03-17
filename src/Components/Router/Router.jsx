@@ -11,6 +11,7 @@ import Payment from "../Payment/Payment"
 // import Header from "../Header/Header"
 import ProductCard from "../OurStore/ProductCard"
 import OrderScreen from "../OrderScreen/OrderScreen"
+import ProfileTabs from "../ProfileTabs/ProfileTabs"
 
 const RoutersApi = [
     {
@@ -72,6 +73,11 @@ const RoutersApi = [
         id:12,
         path:"/order",
         element:<OrderScreen/>
+    },
+    {
+        id:13,
+        path:"profile",
+        element:<ProfileTabs/>
     }
   
 ]
