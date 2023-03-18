@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate,  } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-import  "./SingleProduct.css"
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../LoadingError/Loading";
-import  moment from "moment"
+import moment from "moment";
 import Message from "../LoadingError/Error";
 import Rating from "../OurStore/Rating";
-import { createProductReview, listProductDetails } from "../Redux/Actions/productAction";
+import Loading from "../LoadingError/Loading";
+import {
+  createProductReview,
+  listProductDetails,
+} from "../Redux/Actions/productAction";
 
 import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/productConstant";
+import "./SingleProduct.css";
 
 const SingleProduct = () => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const productId = useParams().id
+  const productId = useParams().id;
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -42,7 +45,7 @@ const SingleProduct = () => {
 
   const AddToCartHandle = (e) => {
     e.preventDefault();
-   navigate(`/cart/${productId}?qty=${qty}`);
+    navigate(`/cart/${productId}?qty=${qty}`);
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -210,6 +213,5 @@ const SingleProduct = () => {
     </>
   );
 };
-
 
 export default SingleProduct;

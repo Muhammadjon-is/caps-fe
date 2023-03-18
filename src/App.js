@@ -5,7 +5,7 @@ import Header from './Components/Header/Header';
 import RoutersApi from './Components/Router/Router';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Brands from './Components/Brands/Brands';
-import SingleProduct from './Components/SingleProduct/SingleProduct';
+// import SingleProduct from './Components/SingleProduct/SingleProduct';
 function App() {
   return (
      <div className='app'>

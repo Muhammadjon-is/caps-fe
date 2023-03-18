@@ -7,6 +7,7 @@ import gr2 from "../../assets/gr.svg";
 import gaming2 from "../../assets/gamingPc1.png";
 import "./OurStore.css";
 import ProductCard from "./ProductCard";
+
 import axios from "axios";
 const OurStore = () => {
   const [grid, setGrid] = useState(4);

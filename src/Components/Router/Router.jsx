@@ -13,6 +13,7 @@ import Payment from "../Payment/Payment"
 import OrderScreen from "../OrderScreen/OrderScreen"
 // import ProfileTabs from "../ProfileTabs/ProfileTabs"
 import ProfileScreen from "../ProfileTabs/ProfileScreen"
+import HomeSecreen from "../HomeSecreen"
 
 const RoutersApi = [
     {
@@ -42,7 +43,7 @@ const RoutersApi = [
     },
     {
         id:6,
-        path:"/cart",
+        path:"/cart/:id?",
         element:<Cart/>
     },
     {
@@ -79,7 +80,17 @@ const RoutersApi = [
         id:13,
         path:"profile",
         element:<ProfileScreen/>
-    }
+    },
+    {
+    id:14,
+    path:"/page/:pagenumber",
+    element:<HomeSecreen/>
+    },
+    {
+        id:15,
+        path:"/search/:keyword",
+        element:<HomeSecreen/>
+        }
   
 ]
 

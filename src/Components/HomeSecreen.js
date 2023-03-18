@@ -9,6 +9,7 @@ const HomeSecreen = () => {
   return (
     <div>
         <ProductCard keyword={keyword} pageNumber={pageNumber}/>
+        
     </div>
   )
 }
