@@ -6,11 +6,8 @@ import moment from "moment";
 import Message from "../LoadingError/Error";
 import Rating from "../OurStore/Rating";
 import Loading from "../LoadingError/Loading";
-import {
-  createProductReview,
-  listProductDetails,
-} from "../Redux/Actions/productAction";
 
+import { createProductReview, listProductDetails } from "../Redux/Actions/productAction";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/productConstant";
 import "./SingleProduct.css";
 

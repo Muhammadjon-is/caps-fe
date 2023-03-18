@@ -41,8 +41,8 @@ const Cart = () => {
       <Crumb title="MyCart" />
       <LoginContainer class1="cart-wrapper home-wrapper-2 py-5">
         <div className="container">
-          
-            {/* <div className=" alert alert-info text-center mt-3">
+          {cartItems.length === 0 ? (
+            <div className=" alert alert-info text-center mt-3">
               Your cart is empty
               <Link
                 className="btn btn-success mx-5 px-5 py-3"
@@ -53,8 +53,8 @@ const Cart = () => {
               >
                 SHOPPING NOW
               </Link>
-            </div> */}
-        
+            </div>
+          ) : (
             <>
               <div className=" alert alert-info text-center mt-3">
                 Total Cart Products
@@ -120,7 +120,7 @@ const Cart = () => {
                 )}
               </div>
             </>
-          
+          )}
         </div>
       </LoginContainer>
     </>

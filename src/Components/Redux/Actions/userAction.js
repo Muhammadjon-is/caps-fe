@@ -13,7 +13,7 @@ import {
     USER_UPDATE_PROFILE_FAIL,
     USER_UPDATE_PROFILE_REQUEST,
     USER_UPDATE_PROFILE_SUCCESS,
-  } from "../Constants/userConstant";
+  } from "../Constants/userConstant.js";
   import axios from "axios";
   import { ORDER_LIST_MY_RESET } from "../Constants/orderConstant";
   

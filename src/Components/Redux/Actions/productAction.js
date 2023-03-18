@@ -9,8 +9,8 @@ import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
-} from "../Constants/productConstant";
-import { logout } from "./userAction";
+} from "../Constants/productConstant.js";
+import { logout } from "./userAction.js";
 
 // PRODUCT LIST
 export const listProduct =
