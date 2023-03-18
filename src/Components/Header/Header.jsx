@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { BsSearch } from "react-icons/bs"
-import { logout } from "../Redux/Actions/userAction";
+// import { useDispatch, useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
+import { logout } from "../Redux/Actions/userAction";
+
 const Header = () => {
   const [keyword, setKeyword] = useState();
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart);
@@ -14,9 +16,9 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
-  const logoutHandler = () => {
+  const logoutUser = () => {
     dispatch(logout());
   };
 
@@ -83,18 +85,14 @@ const Header = () => {
                           <Link to="/OurStore">Our Store</Link>
 
                           <Link to="/contact">Contact</Link>
-                          <Link to="/login">
-                            <p className="mb-0">
-                              Log in <br /> My Account
-                            </p>
-                          </Link>
-                          <Link to="cart">
-                            <i className="fas fa-shopping-bag"></i>
-                            <span className="badge">{cartItems.length}</span>
-                          </Link>
-                        </div>
+                          
+                        
+                      
+
+
 
                         <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
+                         
                           {userInfo ? (
                             <div className="dropdown">
                               <button
@@ -119,7 +117,7 @@ const Header = () => {
                                   <Link
                                     className="dropdown-item"
                                     to="/"
-                                    onClick={logoutHandler}
+                                    onClick={logoutUser}
                                   >
                                     Logout
                                   </Link>
@@ -136,6 +134,11 @@ const Header = () => {
                               </Link>
                             </>
                           )}
+                            <Link to="cart">
+                            <i className="fas fa-shopping-bag"></i>
+                            <span className="badge">{cartItems.length}</span>
+                          </Link>
+                        </div>
                         </div>
                       </div>
                     </div>
