@@ -85,14 +85,14 @@ const Header = () => {
                           <Link to="/OurStore">Our Store</Link>
 
                           <Link to="/contact">Contact</Link>
-                          
-                        
-                      
 
-
+                          <Link to="cart">
+                            <i className="fas fa-shopping-bag"></i>
+                            <span className="badge">{cartItems.length}</span>
+                          </Link>
+                        </div>
 
                         <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
-                         
                           {userInfo ? (
                             <div className="dropdown">
                               <button
@@ -134,11 +134,6 @@ const Header = () => {
                               </Link>
                             </>
                           )}
-                            <Link to="cart">
-                            <i className="fas fa-shopping-bag"></i>
-                            <span className="badge">{cartItems.length}</span>
-                          </Link>
-                        </div>
                         </div>
                       </div>
                     </div>

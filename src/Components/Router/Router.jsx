@@ -72,7 +72,7 @@ const RoutersApi = [
     },
     {
         id:12,
-        path:"/order",
+        path:"/order/:id",
         element:<OrderScreen/>
     },
     {
