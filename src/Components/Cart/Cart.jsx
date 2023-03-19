@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect,  } from "react";
+import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
 import Meta from "../Login.jsx/Meta";
@@ -9,31 +9,30 @@ import { addToCart, removefromcart } from "../Redux/Actions/cartAction";
 
 import "./Cart.css";
 const Cart = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { productId, qty } = useParams();
-  // const [quantity, setQuantity] = useState(qty ? Number(qty) : 1);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const qty = new URLSearchParams(location.search).get('qty') || 1;
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const total = cartItems
-    .reduce((accumulator, item) => accumulator + item.qty * item.price, 0)
-    .toFixed(2);
+  const total = cartItems.reduce((a, i) => a + i.qty * i.price, 0).toFixed(2);
 
-    useEffect(() => {
-      if (productId) {
-        dispatch(addToCart(productId, qty));
-      }
-    }, [dispatch, productId, qty]);
-  
-    const checkOutHandler = () => {
-      navigate("/login?redirect=shipping");
-    };
-  
-    const removeFromCartHandle = (id) => {
-      dispatch(removefromcart(id));
-    };
+  useEffect(() => {
+    if (id) {
+      dispatch(addToCart(id, qty));
+    }
+  }, [dispatch, id, qty]);
+
+  const checkOutHandler = () => {
+    navigate('/login', { state: { redirect: '/shipping' } });
+  };
+
+  const removeFromCartHandle = (id) => {
+    dispatch(removefromcart(id));
+  };
 
   return (
     <>

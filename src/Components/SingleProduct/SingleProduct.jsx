@@ -17,7 +17,7 @@ const SingleProduct = () => {
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
 
-  const productId = useParams().id;
+  const { id: productId } = useParams()
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
