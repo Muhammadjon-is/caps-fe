@@ -1,6 +1,6 @@
 import React from "react";
-import { useEffect, useState  } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useState  } from "react";
+import { Link, useNavigate,  } from "react-router-dom";
 import Crumb from "./Crumb";
 import Meta from "./Meta";
 import LoginContainer from "./LoginContainer";
@@ -10,32 +10,28 @@ import { login } from "../Redux/Actions/userAction";
 import Message from "../LoadingError/Error";
 import { useDispatch, useSelector } from "react-redux";
 import "./Login.css";
+
+
 const Login = () => {
 
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
- 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  // const { id } = useParams()
-  // const redirect = id ? `/${id}` : "/"; 
+  const redirect = new URLSearchParams(window.location.search).get("redirect") || "/";
 
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     navigate(redirect);
-  //     console.log(redirect);
-  //   }
-  // }, [userInfo, redirect]);
+  if (userInfo) {
+    navigate(redirect, { replace: true });
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
-
 
   return (
     <>

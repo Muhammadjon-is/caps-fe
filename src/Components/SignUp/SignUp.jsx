@@ -4,35 +4,32 @@ import Meta from "../Login.jsx/Meta";
 import LoginContainer from "../Login.jsx/LoginContainer";
 // import LoginInput from "../Login.jsx/LoginIput";
 import {  useState } from "react";
-// import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import { register } from "../Redux/Actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../LoadingError/Error";
 import Loading from "../LoadingError/Loading";
 import "./SignUp.css";
 const SignUp = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-// const navigate = useNavigate()
+
   const dispatch = useDispatch();
-  // const { id } = useParams()
-  // const redirect = id ? `/${id}` : "/"; 
+  const redirect = new URLSearchParams(window.location.search).get("redirect") || "/";
 
   const userRegister = useSelector((state) => state.userRegister);
   const { error, loading, userInfo } = userRegister;
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     navigate(redirect);
-  //   }
-  // }, [userInfo,  redirect]);
+  if (userInfo) {
+    navigate(redirect, { replace: true });
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(register(name, email, password));
   };
-
   return (
     <>
       <Meta title={"Sign Up"} />
