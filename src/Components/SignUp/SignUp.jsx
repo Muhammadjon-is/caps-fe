@@ -4,7 +4,7 @@ import Meta from "../Login.jsx/Meta";
 import LoginContainer from "../Login.jsx/LoginContainer";
 // import LoginInput from "../Login.jsx/LoginIput";
 import {  useState } from "react";
-import { useNavigate, } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { register } from "../Redux/Actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../LoadingError/Error";
@@ -44,36 +44,40 @@ const SignUp = () => {
 
               <form
                 action=""
-                className="d-flex flex-column gap-15"
+                className="d-flex flex-column gap-15 " 
                 onSubmit={submitHandler}
               >
-            <input
+            <input className="RegInput"
             type="text"
             placeholder="Username"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
+          className="RegInput"
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+          className="RegInput"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
                 <div>
-                  <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                    <button className="button border-0">Sign Up</button>
-                    <p>
-            {/* <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-              I Have Account <strong>Login</strong>
-            </Link> */}
-          </p>
+                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+                    <button className="button border-0" type="submit">
+                      Sign up
+                    </button>
+                    <Link to="/login" className="button signup">
+                    I Have Account <strong>Login</strong>
+                    </Link>
                   </div>
+
+                
                 </div>
               </form>
             </div>
