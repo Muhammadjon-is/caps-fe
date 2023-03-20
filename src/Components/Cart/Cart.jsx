@@ -57,7 +57,7 @@ const Cart = () => {
             </div>
           ) : (
             <>
-              <div className=" alert alert-info text-center mt-3">
+              <div className=" alert  text-center mt-3">
                 Total Cart Products
                 <Link className="text-success mx-2" to="/cart">
                   ({cartItems.length})

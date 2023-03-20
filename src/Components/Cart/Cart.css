@@ -34,11 +34,15 @@
 .cart-iterm {
   margin: 40px 0;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(0, 0, 0);
   box-shadow: 0 12px 20px 1px rgba(64, 64, 64, 0.09);
   position: relative;
+  color: orange;
 }
 
+.alert{
+  background-color: #111111;
+}
 .remove-button {
   background-color: red;
   width: 25px;
@@ -61,10 +65,13 @@
   font-size: 17px;
   font-weight: bold;
 }
+.cart-item {
+  border: 1px solid grey;
+}
 .cart-text p {
   margin-top: 10px;
   font-size: 15px;
-  color: #7a7a7a;
+  color: orange;
 }
 .cart-qty select {
   width: 100%;
@@ -76,7 +83,7 @@
 .cart-qty h6,
 .cart-price h6 {
   margin-bottom: 15px;
-  color: #8c8c8c;
+  color: orange;
   font-size: 13px;
   text-transform: uppercase;
 }
@@ -87,14 +94,14 @@
   padding: 0 30px;
 }
 .total .sub {
-  color: #8c8c8c;
+  color: #ffffff;
   font-size: 20px;
   text-transform: uppercase;
   margin-right: 20px;
 }
 .total .total-price {
   font-size: 20px;
-  color: #000000;
+  color: orange;
   font-weight: bold;
 }
 .cart-buttons {
@@ -107,9 +114,11 @@
   border: 0px;
   text-transform: uppercase;
   font-size: 13px;
-  background-color: #1cb803;
-  color: #ffffff;
+  background-color: #000000;
+  color: orange;
+  font-weight: bold;
 }
 .cart-buttons a:nth-child(1) button {
   background-color: #000000;
+  font-weight: bold;
 }
