@@ -15,7 +15,8 @@ const Cart = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const qty = new URLSearchParams(location.search).get('qty') || 1;
+  // const qty = new URLSearchParams(location.search).get('qty') || 1;
+  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -28,9 +29,13 @@ const Cart = () => {
     }
   }, [dispatch, id, qty]);
 
+
   const checkOutHandler = () => {
-    navigate('/login', { state: { redirect: '/shipping' } });
+    navigate("/login?redirect=shipping");
   };
+  // const checkOutHandler = () => {
+  //   navigate('/login', { state: { redirect: '/shipping' } });
+  // };
 
   const removeFromCartHandle = (id) => {
     dispatch(removefromcart(id));
