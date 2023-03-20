@@ -68,9 +68,10 @@ const Cart = () => {
                 <div className="cart-iterm row">
                   <div
                     onClick={() => removeFromCartHandle(item.product)}
-                    className="remove-button d-flex justify-content-center align-items-center"
+                    className="d-flex remove-button justify-content-center align-items-center"
                   >
-                    <i className="fas fa-times"></i>
+                    {/* <i className="fas fa-times"></i> */}
+                    <i class="fa-solid fa-trash"></i>
                   </div>
                   <div className="cart-image col-md-3">
                     <img src={item.image} alt={item.name} />
@@ -111,7 +112,7 @@ const Cart = () => {
               </div>
               <hr />
               <div className="cart-buttons d-flex align-items-center row">
-                <Link to="/" className="col-md-6 ">
+                <Link to="/OurStore" className="col-md-6 ">
                   <button>Continue To Shopping</button>
                 </Link>
                 {total > 0 && (

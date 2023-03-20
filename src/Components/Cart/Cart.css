@@ -44,7 +44,7 @@
   background-color: #111111;
 }
 .remove-button {
-  background-color: red;
+  /* background-color: red;
   width: 25px;
   height: 25px;
   border-radius: 100px;
@@ -53,6 +53,14 @@
   left: -10px;
   font-size: 12px;
   color: #ffffff;
+  cursor: pointer;
+  margin-left: 10px; */
+}
+.remove-button i {
+  margin: 10px;
+  font-size: 20px;
+}
+.remove-button i:hover{
   cursor: pointer;
 }
 .cart-image img {
@@ -66,7 +74,7 @@
   font-weight: bold;
 }
 .cart-item {
-  border: 1px solid grey;
+  border: 1px solid;
 }
 .cart-text p {
   margin-top: 10px;
