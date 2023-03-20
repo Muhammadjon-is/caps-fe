@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
 import { logout } from "../Redux/Actions/userAction";
 
+
 const Header = () => {
   const [keyword, setKeyword] = useState();
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Header = () => {
   const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
+  const [ setErrorMessage] = useState("");
   // console.log(userInfo);
 
   const logoutUser = () => {
@@ -27,15 +28,21 @@ const Header = () => {
     if (keyword.trim()) {
       navigate(`/search/${keyword}`);
     } else {
-      navigate("/");
+      setErrorMessage("Keyword not found");
     }
+    
   };
 
   // const userInfo =
 
   return (
     <>
+
+
+    
       <header className="header-upper py-3">
+
+        
         <div className="container-xxl">
           <div className="row align-items-center">
             <div className="col-2">
@@ -68,10 +75,12 @@ const Header = () => {
                     placeholder="Search"
                     onChange={(e) => setKeyword(e.target.value)}
                   />
-                  <button type="submit" className="search-button">
+                  <button type="submit" className="rounded search search-button">
                     search
                   </button>
+                  
                 </form>
+                
               </div>
             </div>
             <div className="col-5">
@@ -90,13 +99,13 @@ const Header = () => {
                             <i className="fas fa-shopping-bag"></i>
                             <span className="badge">{cartItems.length}</span>
                           </Link>
-                        </div>
+                        
 
                         <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
                           {userInfo ? (
-                            <div className="dropdown">
+                            <div className="dropdown  colorLogin">
                               <button
-                                className="btn btn-secondary dropdown-toggle"
+                                className="btn btn-danger menu-links dropdown-toggle"
                                 type="button"
                                 id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown"
@@ -129,15 +138,12 @@ const Header = () => {
                               <Link className="me-3" to="/register">
                                 Register
                               </Link>
-                              <Link className="btn btn-primary" to="/login">
+                              <Link className="" to="/login">
                                 Login
                               </Link>
                             </>
                           )}
-                             <Link to="/cart">
-                  <i className="fas fa-shopping-bag"></i>
-                  <span className="badge">{cartItems.length}</span>
-                </Link>
+                            </div>
                         </div>
                       </div>
                     </div>

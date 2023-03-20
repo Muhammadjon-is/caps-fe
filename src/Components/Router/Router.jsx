@@ -14,6 +14,7 @@ import OrderScreen from "../OrderScreen/OrderScreen"
 // import ProfileTabs from "../ProfileTabs/ProfileTabs"
 import ProfileScreen from "../ProfileTabs/ProfileScreen"
 import HomeSecreen from "../HomeSecreen"
+import ShippingScreen from "../../Shipping/Shipping"
 
 const RoutersApi = [
     {
@@ -90,7 +91,12 @@ const RoutersApi = [
         id:15,
         path:"/search/:keyword",
         element:<HomeSecreen/>
-        }
+        },
+        {
+            id:16,
+            path:"/shipping",
+            element:<ShippingScreen/>
+            }
   
 ]
 

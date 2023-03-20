@@ -33,5 +33,22 @@
  .menu-links a:hover{
     cursor: pointer;
  }
-  
-  
+ .registerLogin{
+  padding-left: 10px;
+ }
+
+  .Login-Register{
+    margin-left: 25px;
+    color: orange;
+  }
+  .colorLogin{
+    color: orange;
+  }
+  .dropbg{
+    background-color: #111111;
+  }
+  .search-button{
+    width: 60px;
+    height: 38px;
+    margin-top: 12px;
+  }

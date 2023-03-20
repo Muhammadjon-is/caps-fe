@@ -8,7 +8,9 @@ import { addToCart, removefromcart } from "../Redux/Actions/cartAction";
 // import images from "../../assets/gamingPc1.png"
 
 import "./Cart.css";
+
 const Cart = () => {
+  
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
