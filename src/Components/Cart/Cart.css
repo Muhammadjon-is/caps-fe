@@ -39,6 +39,11 @@
   position: relative;
   color: orange;
 }
+.cart-image{
+ width: 300px;
+ height: 200px;
+  object-fit: contain;
+}
 
 .alert{
   background-color: #111111;

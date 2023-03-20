@@ -95,10 +95,7 @@ const Header = () => {
 
                           <Link to="/contact">Contact</Link>
 
-                          <Link to="cart">
-                            <i className="fas fa-shopping-bag"></i>
-                            <span className="badge">{cartItems.length}</span>
-                          </Link>
+                          
                         
 
                         <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
@@ -143,7 +140,12 @@ const Header = () => {
                               </Link>
                             </>
                           )}
+                      
                             </div>
+                            <Link to="cart">
+                            <i className="fas fa-shopping-bag"></i>
+                            <span className="badge">{cartItems.length}</span>
+                          </Link>
                         </div>
                       </div>
                     </div>

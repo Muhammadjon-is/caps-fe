@@ -1,10 +1,9 @@
 import React from "react";
-import {  useState  } from "react";
-import { Link, useNavigate,  } from "react-router-dom";
+import {  useState, useEffect  } from "react";
+import { Link, useLocation, useNavigate,  } from "react-router-dom";
 import Crumb from "./Crumb";
 import Meta from "./Meta";
 import LoginContainer from "./LoginContainer";
-import LoginInput from "./LoginIput";
 import Loading from "../LoadingError/Loading";
 import { login } from "../Redux/Actions/userAction";
 import Message from "../LoadingError/Error";
@@ -15,19 +14,22 @@ import "./Login.css";
 const Login = () => {
 
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const redirect = new URLSearchParams(window.location.search).get("redirect") || "/";
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
 
-  if (userInfo) {
-    navigate(redirect, { replace: true });
-  }
-
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [userInfo, navigate, redirect]);
+ console.log(userInfo);
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
@@ -47,13 +49,15 @@ const Login = () => {
         {loading && <Loading />}
               <form action="" className="d-flex flex-column gap-15" onSubmit={submitHandler}>
 
-              <LoginInput
+              <input
+              className="RegInput"
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <LoginInput
+          <input
+          className="RegInput"
             type="password"
             placeholder="Password"
             value={password}
