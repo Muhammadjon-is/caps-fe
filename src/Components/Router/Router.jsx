@@ -5,7 +5,6 @@ import Home from "../Home/Home";
 import Login from "../Login.jsx/Login";
 import SignUp from "../SignUp/SignUp";
 import OurStore from "../OurStore/OurStore";
-import Checkout from "../Checkout/Checkout";
 import SingleProduct from "../SingleProduct/SingleProduct";
 import Payment from "../Payment/Payment";
 // import Header from "../Header/Header"
@@ -53,11 +52,7 @@ const RoutersApi = [
     path: "/*",
     element: <NotFound />,
   },
-  {
-    id: 8,
-    path: "/checkout",
-    element: <Checkout />,
-  },
+
   {
     id: 9,
     path: "/products/:id",

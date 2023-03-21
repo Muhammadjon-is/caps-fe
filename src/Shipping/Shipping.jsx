@@ -16,13 +16,12 @@ const ShippingScreen = () => {
   const [city, setCity] = useState(shippingAddress.city);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
-  const [apartment, setApartment] = useState(shippingAddress.Apartment);
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country, apartment }));
+    dispatch(saveShippingAddress({ address, city, postalCode, country, }));
     navigate("/payment");
   };
 
@@ -78,17 +77,7 @@ const ShippingScreen = () => {
                   className="form-control"
                 />
               </div>
-              <div className="w-100">
-                <input
-
-                  type="text"
-                  placeholder="Apartment, Suite ,etc"
-                  value={apartment}
-                  required
-                  onChange={(e) => setApartment(e.target.value)}
-                  className="form-control"
-                />
-              </div>
+           
               <div className="flex-grow-1">
                 <input
                   type="text"
