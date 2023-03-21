@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  } from "react";
 import ReactStars from "react-rating-stars-component";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
@@ -8,64 +8,11 @@ import gaming2 from "../../assets/gamingPc1.png";
 import "./OurStore.css";
 import ProductCard from "./ProductCard";
 
-import axios from "axios";
+// import axios from "axios";
 const OurStore = () => {
   const [grid, setGrid] = useState(4);
 
-  // // ! Sort data by Price
-  // const [products, setProducts] = useState([]);
-  // const [filteredProducts, setFilteredProducts] = useState([]);
-  // const [minPrice, setMinPrice] = useState("");
-  // const [maxPrice, setMaxPrice] = useState("");
-
-  // useEffect(() => {
-  //   // Fetch products from API or database and set the products state
-  //   // ...
-  //   setProducts(productsData);
-  //   setFilteredProducts(productsData);
-  // }, []);
-
-  // const handleMinPriceChange = (event) => {
-  //   setMinPrice(event.target.value);
-  //   filterProductsByPrice(event.target.value, maxPrice);
-  // };
-
-  // const handleMaxPriceChange = (event) => {
-  //   setMaxPrice(event.target.value);
-  //   filterProductsByPrice(minPrice, event.target.value);
-  // };
-
-  // const filterProductsByPrice = (min, max) => {
-  //   const filtered = products.filter((product) => {
-  //     return product.price >= min && product.price <= max;
-  //   });
-  //   setFilteredProducts(filtered);
-  // };
-
-  // !Sort data min max price
-  const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(9999);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await axios.get(
-        `products?min=${minValue}&max=${maxValue}`
-      );
-      setProducts(response.data);
-    };
-    fetchProducts();
-  }, [minValue, maxValue]);
-
-  const handleMinChange = (event) => {
-    setMinValue(Number(event.target.value));
-  };
-
-  const handleMaxChange = (event) => {
-    setMaxValue(Number(event.target.value));
-  };
-
-  // !Sort products from low to high prices in React
+  
 
   return (
     <>
@@ -101,17 +48,7 @@ const OurStore = () => {
                       In Stock (1)
                     </label>
                   </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id=""
-                    />
-                    <label className="form-check-label" htmlFor="">
-                      Out of Stock(0)
-                    </label>
-                  </div>
+                 
                 </div>
                 <h5 className="sub-title">Price</h5>
                 <div className="d-flex align-items-center gap-10">
@@ -120,8 +57,8 @@ const OurStore = () => {
                       className="form-control"
                       id="floatingInput"
                       placeholder="From"
-                      value={minValue}
-                    onChange={handleMinChange}
+                    //   value={minValue}
+                    // onChange={handleMinChange}
                     />
                     <label htmlFor="floatingInput">From</label>
                   </div>
@@ -130,8 +67,8 @@ const OurStore = () => {
                       className="form-control"
                       id="floatingInput1"
                       placeholder="To"
-                      value={maxValue}
-                      onChange={handleMaxChange}
+                      // value={maxValue}
+                      // onChange={handleMaxChange}
                     />
                     <label htmlFor="floatingInput1">To</label>
                   </div>
@@ -209,7 +146,6 @@ const OurStore = () => {
                     id=""
                   >
                     <option value="manual">Featured</option>
-                    <option value="best-selling">Best selling</option>
 
                     <option value="price-ascending">Price, low to high</option>
                     <option value="price-descending">Price, high to low</option>

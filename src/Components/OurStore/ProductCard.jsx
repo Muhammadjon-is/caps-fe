@@ -19,6 +19,8 @@ const ProductCard = (props) => {
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
+ 
+ console.log(productList);
 
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber));
