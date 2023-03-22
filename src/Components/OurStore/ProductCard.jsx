@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import Pagination from "./Pagination";
 import Message from "../LoadingError/Error";
@@ -13,14 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 import "./ProductCard.css";
 // import { Laptop } from "@mui/icons-material";
 
-const ProductCard = (props) => {
-  const { keyword, pagenumber } = props;
+const ProductCard = () => {
+  const { keyword, pagenumber } = useParams();
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
- 
- console.log(productList);
 
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber));

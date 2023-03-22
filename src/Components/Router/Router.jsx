@@ -93,10 +93,16 @@ const RoutersApi = [
     path: "/login/shipping",
     element: <ShippingScreen />,
   },
+  
   {
   id:17,
   path:"/placeOrder",
   element:<PlaceOrder/>
+  },
+  {
+    id:18,
+    path:"/search/:keyword/page/:pageNumber",
+    element:<HomeSecreen/>
   }
 ];
 
