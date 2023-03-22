@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,  } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { BsSearch } from "react-icons/bs"
 // import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +18,39 @@ const Header = () => {
   const { userInfo } = userLogin;
   const [ setErrorMessage] = useState("");
   // console.log(userInfo);
+
+
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [filteredData, setFilteredData] = useState([]);
+  
+  // const [data, setData] = useState([]);
+  
+  // useEffect(() => {
+  //   fetch("your_api_url_here")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error(error));
+  // }, []);
+  
+  
+  // const filterData = (query) => {
+  //   const filtered = data.filter((item) =>
+  //     item.name.toLowerCase().includes(query.toLowerCase())
+  //   );
+  //   setFilteredData(filtered);
+  // };
+  
+  
+  // <input
+  //   type="text"
+  //   placeholder="Search by name"
+  //   value={searchQuery}
+  //   onChange={(e) => {
+  //     setSearchQuery(e.target.value);
+  //     filterData(e.target.value);
+  //   }}
+  // />
+
 
   const logoutUser = () => {
     dispatch(logout());

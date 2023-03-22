@@ -1,43 +1,35 @@
-import React from "react";
-import { Link,  } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const Pagination = ({ pages, page, keyword = "" }) => {
-  const pageLinks = [];
-  const limit = 6;
-  const pageCount = Math.ceil(pages / limit);
+const Pagination = ({ pages }) => {
+  const { keyword, page } = useParams();
 
-  for (let i = 1; i <= pageCount; i++) {
-    pageLinks.push(i);
-  }
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
 
-  const startIndex = (page - 1) * limit;
-  const endIndex = startIndex + limit;
-  const currentProducts = pageLinks.slice(startIndex, endIndex);
+    for (let i = 1; i <= pages; i++) {
+      pageNumbers.push(i);
+    }
 
-  // const location = useLocation();
+    return pageNumbers.map((number) => (
+      <li
+        className={`page-item ${number === +page ? "active" : null}`}
+        key={number}
+      >
+        <Link
+          to={keyword ? `/search/${keyword}/page/${number}` : `/page/${number}`}
+          className="page-link"
+        >
+          {number}
+        </Link>
+      </li>
+    ));
+  };
 
   return (
-    pageCount > 1 && (
+    pages > 1 && (
       <nav>
         <ul className="pagination justify-content-center">
-          {currentProducts.map((pageNumber) => (
-            <li
-              className={`page-item ${pageNumber === page ? "active" : ""}`}
-              key={pageNumber}
-            >
-              <Link
-                className="page-link"
-                to={
-                  keyword
-                    ? `/search/${keyword}/page/${pageNumber}`
-                    : `/page/${pageNumber}`
-                }
-                replace={pageNumber === page}
-              >
-                {pageNumber}
-              </Link>
-            </li>
-          ))}
+          {renderPageNumbers()}
         </ul>
       </nav>
     )

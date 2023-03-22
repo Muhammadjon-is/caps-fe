@@ -25,7 +25,7 @@ const Home = () => {
                 
                 <h1>Get up to 30% Off New Arrivals</h1>
                 <div className="red_button shop_now_button">
-                  <a href="#">shop now</a>
+                  <Link to="/OurStore">shop now</Link>
                 </div>
               </div>
             </div>

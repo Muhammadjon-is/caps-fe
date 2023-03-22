@@ -174,12 +174,12 @@ const SingleProduct = () => {
                       </select>
                     </div>
                     <div className="my-4">
-                      <strong>Comment</strong>
+                      <strong className="commentSection">Comment</strong>
                       <textarea
                         row="3"
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
-                        className="col-12 bg-light p-3 mt-2 border-0 rounded"
+                        className="col-12 bg-dark p-3 mt-2 border-0 rounded"
                       ></textarea>
                     </div>
                     <div className="my-3">
