@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveShippingAddress } from "../Components/Redux/Actions/cartAction";
 import { useNavigate } from "react-router-dom/dist";
 import { Link } from "react-router-dom/dist";
 import { BiArrowBack } from "react-icons/bi";
+import { saveShippingAddress } from "../Components/Redux/Actions/cartAction";
 import "./Shipping.css";
 
 const ShippingScreen = () => {
@@ -11,6 +11,7 @@ const ShippingScreen = () => {
 
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
+  console.log(shippingAddress);
 
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
@@ -21,7 +22,7 @@ const ShippingScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country, }));
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
   };
 
@@ -71,10 +72,10 @@ const ShippingScreen = () => {
                 <input
                   type="text"
                   placeholder="Enter Address"
+                  className="form-control"
                   value={address}
                   required
                   onChange={(e) => setAddress(e.target.value)}
-                  className="form-control"
                 />
               </div>
            
@@ -114,11 +115,12 @@ const ShippingScreen = () => {
                       <BiArrowBack className="me-2" />
                       Return to Cart
                     </Link>
-                    <Link to="/payment" className="button">
+                    <button  type="submit" className="button">
                       Continue to Payment
-                    </Link>
+                    </button>
                   </div>
                 </div>
+
             </form>
           </div>
         </div>
