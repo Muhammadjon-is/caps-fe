@@ -8,6 +8,12 @@ import { updateUserProfile } from "../Redux/Actions/userAction";
 import "react-toastify/dist/ReactToastify.css";
 
 const ProfileTabs = () => {
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { loading: updateLoading } = userUpdateProfile;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,12 +29,6 @@ const ProfileTabs = () => {
     });
   };
   const dispatch = useDispatch();
-
-  const userDetails = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userDetails;
-
-  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-  const { loading: updateLoading } = userUpdateProfile;
 
   useEffect(() => {
     if (user) {
@@ -53,7 +53,6 @@ const ProfileTabs = () => {
       });
     }
   };
-
 
   return (
     <>

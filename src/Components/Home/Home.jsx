@@ -1,84 +1,81 @@
-import React from 'react'
-import { Carousel } from 'react-bootstrap'
-import LoginContainer from '../Login.jsx/LoginContainer'
-import { Link } from 'react-router-dom'
-import "./Home.css"
-import  gamer from "../../assets/gamer.jpg"
-import slider1 from "../../assets/slider1.jpg"
-import slider2 from "../../assets/slider2.jpg"
-import slider3 from "../../assets/slider3.jpg"
+import React from "react";
+import { Carousel } from "react-bootstrap";
+import LoginContainer from "../Login.jsx/LoginContainer";
+import { Link } from "react-router-dom";
+import "./Home.css";
+import gamer from "../../assets/gamer.jpg";
+import slider1 from "../../assets/slider1.jpg";
+import slider2 from "../../assets/slider2.jpg";
+import slider3 from "../../assets/slider3.jpg";
 const Home = () => {
   return (
     <div>
-    <Carousel>
-    <Carousel.Item>
-      <div
-        className="d-block w-100 main_slider"
-        style={{
-          backgroundImage: `url(${slider1})`,
-        }}
-      >
-        <div className="container fill_height">
-          <div className="row align-items-center fill_height">
-            <div className="col">
-              <div className="main_slider_content" data-aos="fade-right">
-                
-                <h1>Get up to 30% Off New Arrivals</h1>
-                <div className="red_button shop_now_button">
-                  <Link to="/OurStore">shop now</Link>
+      <Carousel>
+        <Carousel.Item>
+          <div
+            className="d-block w-100 main_slider"
+            style={{
+              backgroundImage: `url(${slider1})`,
+            }}
+          >
+            <div className="container fill_height">
+              <div className="row align-items-center fill_height">
+                <div className="col">
+                  <div className="main_slider_content" data-aos="fade-right">
+                    <h1>Get up to 30% Off New Arrivals</h1>
+                    <div className="red_button shop_now_button">
+                      <Link to="/OurStore">shop now</Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </Carousel.Item>
-    <Carousel.Item>
-      <div
-        className="d-block w-100 main_slider"
-        style={{
-          backgroundImage: `url(${slider2})`,
-        }}
-      >
-        <div className="container fill_height">
-          <div className="row align-items-center fill_height">
-            <div className="col">
-              <div className="main_slider_content" data-aos="fade-right">
-                
-                <h1>Get up to 30% Off New Arrivals</h1>
-                <div className="red_button shop_now_button">
-                  <a href="#">shop now</a>
+        </Carousel.Item>
+        <Carousel.Item>
+          <div
+            className="d-block w-100 main_slider"
+            style={{
+              backgroundImage: `url(${slider2})`,
+            }}
+          >
+            <div className="container fill_height">
+              <div className="row align-items-center fill_height">
+                <div className="col">
+                  <div className="main_slider_content" data-aos="fade-right">
+                    <h1>Get up to 30% Off New Arrivals</h1>
+                    <div className="red_button shop_now_button">
+                      <a href="#">shop now</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </Carousel.Item>
-    <Carousel.Item>
-      <div
-        className="d-block w-100 main_slider"
-        style={{
-          backgroundImage: `url(${slider3})`,
-        }}
-      >
-        <div className="container fill_height">
-          <div className="row align-items-center fill_height">
-            <div className="col">
-              <div className="main_slider_content" data-aos="fade-right">
-               
-                <h1>Get up to 30% Off New Arrivals</h1>
-                <div className="red_button shop_now_button">
-                  <a href="#">shop now</a>
+        </Carousel.Item>
+        <Carousel.Item>
+          <div
+            className="d-block w-100 main_slider"
+            style={{
+              backgroundImage: `url(${slider3})`,
+            }}
+          >
+            <div className="container fill_height">
+              <div className="row align-items-center fill_height">
+                <div className="col">
+                  <div className="main_slider_content" data-aos="fade-right">
+                    <h1>Get up to 30% Off New Arrivals</h1>
+                    <div className="red_button shop_now_button">
+                      <a href="#">shop now</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </Carousel.Item>
-  </Carousel>
-  <LoginContainer class1="home-wrapper-1 py-5">
+        </Carousel.Item>
+      </Carousel>
+      <LoginContainer class1="home-wrapper-1 py-5">
         <div className="row">
           <div className="col-6">
             <div className="main-banner position-relative ">
@@ -157,8 +154,8 @@ const Home = () => {
           </div>
         </div>
       </LoginContainer>
-</div>
-  )
-}
+    </div>
+  );
+};
 
-export default Home
+export default Home;

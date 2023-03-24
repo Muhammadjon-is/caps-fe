@@ -76,19 +76,7 @@ const Header = () => {
               </h2>
             </div>
             <div className="col-5">
-              {/* <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control py-2"
-                  placeholder="Search Product Here..."
-                  aria-label="Search Product Here..."
-                  aria-describedby="basic-addon2"
-                  onChange={(e) => setKeyword(e.target.value)}
-                />
-                <span className="input-group-text p-3" id="basic-addon2">
-                  <BsSearch className="fs-6" onSubmit={submitHandler}  />
-                </span>
-              </div> */}
+             
               <div className="col-12 d-flex align-items-center">
                 <form onSubmit={submitHandler} className="input-group">
                   <input
