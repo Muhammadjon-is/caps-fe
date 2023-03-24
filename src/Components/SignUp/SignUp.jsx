@@ -2,25 +2,28 @@ import React from "react";
 import Crumb from "../Login.jsx/Crumb";
 import Meta from "../Login.jsx/Meta";
 import LoginContainer from "../Login.jsx/LoginContainer";
-// import LoginInput from "../Login.jsx/LoginIput";
-import {  useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { register } from "../Redux/Actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../LoadingError/Error";
 import Loading from "../LoadingError/Loading";
 import "./SignUp.css";
-const SignUp = () => {
-  const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
+const SignUp = () => {
   const dispatch = useDispatch();
-  const redirect = new URLSearchParams(window.location.search).get("redirect") || "/";
+  const redirect =
+    new URLSearchParams(window.location.search).get("redirect") || "/";
 
   const userRegister = useSelector((state) => state.userRegister);
   const { error, loading, userInfo } = userRegister;
+
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   if (userInfo) {
     navigate(redirect, { replace: true });
@@ -28,8 +31,17 @@ const SignUp = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(name, email, password));
+    dispatch(register(formData.name, formData.email, formData.password));
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
   return (
     <>
       <Meta title={"Sign Up"} />
@@ -44,40 +56,42 @@ const SignUp = () => {
 
               <form
                 action=""
-                className="d-flex flex-column gap-15 " 
+                className="d-flex flex-column gap-15 "
                 onSubmit={submitHandler}
               >
-            <input className="RegInput"
-            type="text"
-            placeholder="Username"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-          className="RegInput"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-          className="RegInput"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+                <input
+                  className="RegInput"
+                  type="text"
+                  placeholder="Username"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                <input
+                  className="RegInput"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="RegInput"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
                 <div>
-                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+                  <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                     <button className="button border-0" type="submit">
                       Sign up
                     </button>
                     <Link to="/login" className="button signup">
-                    I Have Account <strong>Login</strong>
+                      I Have Account <strong>Login</strong>
                     </Link>
                   </div>
-
-                
                 </div>
               </form>
             </div>

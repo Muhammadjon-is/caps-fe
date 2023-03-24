@@ -1,11 +1,10 @@
-import React, { useState,  } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { BsSearch } from "react-icons/bs"
 // import { useDispatch, useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
 import { logout } from "../Redux/Actions/userAction";
-
 
 const Header = () => {
   const [keyword, setKeyword] = useState();
@@ -16,31 +15,28 @@ const Header = () => {
   const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  const [ setErrorMessage] = useState("");
+  const [setErrorMessage] = useState("");
   // console.log(userInfo);
-
 
   // const [searchQuery, setSearchQuery] = useState("");
   // const [filteredData, setFilteredData] = useState([]);
-  
+
   // const [data, setData] = useState([]);
-  
+
   // useEffect(() => {
   //   fetch("your_api_url_here")
   //     .then((response) => response.json())
   //     .then((data) => setData(data))
   //     .catch((error) => console.error(error));
   // }, []);
-  
-  
+
   // const filterData = (query) => {
   //   const filtered = data.filter((item) =>
   //     item.name.toLowerCase().includes(query.toLowerCase())
   //   );
   //   setFilteredData(filtered);
   // };
-  
-  
+
   // <input
   //   type="text"
   //   placeholder="Search by name"
@@ -50,7 +46,6 @@ const Header = () => {
   //     filterData(e.target.value);
   //   }}
   // />
-
 
   const logoutUser = () => {
     dispatch(logout());
@@ -63,19 +58,13 @@ const Header = () => {
     } else {
       setErrorMessage("Keyword not found");
     }
-    
   };
 
   // const userInfo =
 
   return (
     <>
-
-
-    
       <header className="header-upper py-3">
-
-        
         <div className="container-xxl">
           <div className="row align-items-center">
             <div className="col-2">
@@ -108,12 +97,13 @@ const Header = () => {
                     placeholder="Search"
                     onChange={(e) => setKeyword(e.target.value)}
                   />
-                  <button type="submit" className="rounded search search-button">
+                  <button
+                    type="submit"
+                    className="rounded search search-button"
+                  >
                     search
                   </button>
-                  
                 </form>
-                
               </div>
             </div>
             <div className="col-5">
@@ -128,54 +118,53 @@ const Header = () => {
 
                           <Link to="/contact">Contact</Link>
 
-                          
-                        
-
-                        <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
-                          {userInfo ? (
-                            <div className="dropdown  colorLogin">
-                              <button
-                                className="btn btn-danger menu-links dropdown-toggle"
-                                type="button"
-                                id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                Hi, {userInfo.name}
-                              </button>
-                              <ul
-                                class="dropdown-menu"
-                                aria-labelledby="dropdownMenuButton1"
-                              >
-                                <li>
-                                  <Link className="dropdown-item" to="/profile">
-                                    Profile
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    to="/"
-                                    onClick={logoutUser}
-                                  >
-                                    Logout
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                          ) : (
-                            <>
-                              <Link className="me-3" to="/register">
-                                Register
-                              </Link>
-                              <Link className="" to="/login">
-                                Login
-                              </Link>
-                            </>
-                          )}
-                      
-                            </div>
-                            <Link to="cart">
+                          <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
+                            {userInfo ? (
+                              <div className="dropdown  colorLogin">
+                                <button
+                                  className="btn btn-danger menu-links dropdown-toggle"
+                                  type="button"
+                                  id="dropdownMenuButton1"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  Hi, {userInfo.name}
+                                </button>
+                                <ul
+                                  class="dropdown-menu"
+                                  aria-labelledby="dropdownMenuButton1"
+                                >
+                                  <li>
+                                    <Link
+                                      className="dropdown-item"
+                                      to="/profile"
+                                    >
+                                      Profile
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      className="dropdown-item"
+                                      to="/"
+                                      onClick={logoutUser}
+                                    >
+                                      Logout
+                                    </Link>
+                                  </li>
+                                </ul>
+                              </div>
+                            ) : (
+                              <>
+                                <Link className="me-3" to="/register">
+                                  Register
+                                </Link>
+                                <Link className="" to="/login">
+                                  Login
+                                </Link>
+                              </>
+                            )}
+                          </div>
+                          <Link to="cart">
                             <i className="fas fa-shopping-bag"></i>
                             <span className="badge">{cartItems.length}</span>
                           </Link>

@@ -1,6 +1,5 @@
-import React from "react";
-import {  useState, useEffect  } from "react";
-import { Link, useLocation, useNavigate,  } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Crumb from "./Crumb";
 import Meta from "./Meta";
 import LoginContainer from "./LoginContainer";
@@ -10,29 +9,35 @@ import Message from "../LoadingError/Error";
 import { useDispatch, useSelector } from "react-redux";
 import "./Login.css";
 
-
 const Login = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
   const redirect = location.search ? location.search.split("=")[1] : "/";
-
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
+
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
     }
   }, [userInfo, navigate, redirect]);
- console.log(userInfo);
-  const submitHandler = (e) => {
+
+  const handleInputChange = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login(credentials.email, credentials.password));
   };
 
   return (
@@ -46,23 +51,28 @@ const Login = () => {
             <div className="auth-card">
               <h3 className="text-center mb-3">Login</h3>
               {error && <Message variant="alert-danger">{error}</Message>}
-        {loading && <Loading />}
-              <form action="" className="d-flex flex-column gap-15" onSubmit={submitHandler}>
-
-              <input
-              className="RegInput"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-          className="RegInput"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+              {loading && <Loading />}
+              <form
+                action=""
+                className="d-flex flex-column gap-15"
+                onSubmit={handleSubmit}
+              >
+                <input
+                  className="RegInput"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={credentials.email}
+                  onChange={handleInputChange}
+                />
+                <input
+                  className="RegInput"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleInputChange}
+                />
                 <div>
                   <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                     <button className="button border-0" type="submit">
