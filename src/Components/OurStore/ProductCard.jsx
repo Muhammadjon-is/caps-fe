@@ -8,8 +8,6 @@ import Rating from "./Rating";
 import { listProduct } from "../Redux/Actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 
-
-
 import "./ProductCard.css";
 // import { Laptop } from "@mui/icons-material";
 
@@ -19,7 +17,7 @@ const ProductCard = () => {
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
-
+console.log(products);
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber));
   }, [dispatch, keyword, pagenumber]);
@@ -68,20 +66,19 @@ const ProductCard = () => {
                     ))}
                   </>
                 )}
-
                 {/* Pagination */}
                 <Pagination
                   pages={pages}
                   page={page}
                   keyword={keyword ? keyword : ""}
-                />
+                  />
+                
               </div>
             </div>
           </div>
         </div>
       </div>
     </>
- 
   );
 };
 

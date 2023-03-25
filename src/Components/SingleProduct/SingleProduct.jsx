@@ -7,7 +7,10 @@ import Message from "../LoadingError/Error";
 import Rating from "../OurStore/Rating";
 import Loading from "../LoadingError/Loading";
 
-import { createProductReview, listProductDetails } from "../Redux/Actions/productAction";
+import {
+  createProductReview,
+  listProductDetails,
+} from "../Redux/Actions/productAction";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/productConstant";
 import "./SingleProduct.css";
 
@@ -17,7 +20,7 @@ const SingleProduct = () => {
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
 
-  const { id: productId } = useParams()
+  const { id: productId } = useParams();
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -76,23 +79,23 @@ const SingleProduct = () => {
                   <p>{product.description}</p>
 
                   <div className="product-count col-lg-7 ">
-                    <div className="flex-box d-flex justify-content-between align-items-center">
+                    <div className="flex-box  d-flex justify-content-between align-items-center">
                       <h6>Price</h6>
-                      <span>${product.price}</span>
+                      <span className="forOrange">${product.price}</span>
                     </div>
-                    <div className="flex-box d-flex justify-content-between align-items-center">
+                    <div className="flex-box   d-flex justify-content-between align-items-center">
                       <h6>Status</h6>
                       {product.countInStock > 0 ? (
-                        <span>In Stock</span>
+                        <span className="forOrange ">In Stock</span>
                       ) : (
-                        <span>unavailable</span>
+                        <span className="forOrange">unavailable</span>
                       )}
                     </div>
-                    <div className="flex-box d-flex justify-content-between align-items-center">
+                    <div className="flex-box forOrange  d-flex justify-content-between align-items-center">
                       <h6>Reviews</h6>
                       <Rating
                         value={product.rating}
-                        text={`${product.numReviews} reviews`}
+                        text={`${product.numReviews} reviews `}
                       />
                     </div>
                     {product.countInStock > 0 ? (

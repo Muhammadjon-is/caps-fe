@@ -65,7 +65,7 @@ const RoutersApi = [
   },
   {
     id: 11,
-    path: "/search/:keyword",
+    path: "/OurStore/search/:keyword",
     element: <OurStore />,
   },
   {
@@ -80,7 +80,7 @@ const RoutersApi = [
   },
   {
     id: 14,
-    path: "/page/:pagenumber",
+    path: "/OurStore/page/:pagenumber",
     element: <HomeSecreen />,
   },
   {
@@ -101,7 +101,7 @@ const RoutersApi = [
   },
   {
     id:18,
-    path:"/search/:keyword/page/:pageNumber",
+    path:"/OurStore/search/:keyword/page/:pageNumber",
     element:<HomeSecreen/>
   }
 ];

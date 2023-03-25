@@ -1,4 +1,4 @@
-import React, { useState,  } from "react";
+import React, { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
@@ -11,8 +11,6 @@ import ProductCard from "./ProductCard";
 // import axios from "axios";
 const OurStore = () => {
   const [grid, setGrid] = useState(4);
-
-  
 
   return (
     <>
@@ -48,7 +46,6 @@ const OurStore = () => {
                       In Stock (1)
                     </label>
                   </div>
-                 
                 </div>
                 <h5 className="sub-title">Price</h5>
                 <div className="d-flex align-items-center gap-10">
@@ -57,8 +54,8 @@ const OurStore = () => {
                       className="form-control"
                       id="floatingInput"
                       placeholder="From"
-                    //   value={minValue}
-                    // onChange={handleMinChange}
+                      //   value={minValue}
+                      // onChange={handleMinChange}
                     />
                     <label htmlFor="floatingInput">From</label>
                   </div>

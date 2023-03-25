@@ -1,6 +1,7 @@
 .single-product {
     margin-top: 50px;
     margin-bottom: 50px;
+    color: orange !important;
   }
   .single-image {
     background-color: #f3fbf7;
@@ -33,7 +34,7 @@
     color: orange;
   }
   .product-count {
-    border: 2px solid #f3f3f3;
+    border: 2px solid #ffffff;
     border-radius: 5px;
     margin-top: 40px;
   }
@@ -46,10 +47,13 @@
   }
   .product-count .flex-box span {
     font-weight: 600;
-    color: #000000;
+    color: orange;
   }
+  .forOrange{
+    color: orange !important;
+  } 
   .product-count .flex-box select {
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     width: 100px;
     height: 40px;
     text-align: center;

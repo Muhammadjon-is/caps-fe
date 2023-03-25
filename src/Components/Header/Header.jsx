@@ -16,36 +16,7 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const [setErrorMessage] = useState("");
-  // console.log(userInfo);
 
-  // const [searchQuery, setSearchQuery] = useState("");
-  // const [filteredData, setFilteredData] = useState([]);
-
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("your_api_url_here")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error(error));
-  // }, []);
-
-  // const filterData = (query) => {
-  //   const filtered = data.filter((item) =>
-  //     item.name.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   setFilteredData(filtered);
-  // };
-
-  // <input
-  //   type="text"
-  //   placeholder="Search by name"
-  //   value={searchQuery}
-  //   onChange={(e) => {
-  //     setSearchQuery(e.target.value);
-  //     filterData(e.target.value);
-  //   }}
-  // />
 
   const logoutUser = () => {
     dispatch(logout());
@@ -64,9 +35,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="header-upper py-3">
-        <div className="container-xxl">
-          <div className="row align-items-center">
+      <header className="header-upper py-3 forfixed">
+        <div className="container-xxl ">
+          <div className="row align-items-center ">
             <div className="col-2">
               <h2>
                 <Link className="main-logo navbar-brand" to="/">
@@ -100,7 +71,7 @@ const Header = () => {
                   <div className="col-12">
                     <div className="menu-bottom d-flex align-items-center gap-30">
                       <div className="menu-links">
-                        <div className="d-flex align-items-center gap-15">
+                        <div className="d-flex align-items-center gap-15 ">
                           <Link to="/">Home</Link>
                           <Link to="/OurStore">Our Store</Link>
 
@@ -119,7 +90,7 @@ const Header = () => {
                                   Hi, {userInfo.name}
                                 </button>
                                 <ul
-                                  class="dropdown-menu"
+                                  class="dropdown-menu dropbg"
                                   aria-labelledby="dropdownMenuButton1"
                                 >
                                   <li>
