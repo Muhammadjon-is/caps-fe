@@ -4,14 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { createOrder } from "../Redux/Actions/orderAction";
 import { ORDER_CREATE_RESET } from "../Redux/Constants/orderConstant";
 import Message from "../LoadingError/Error";
-import "./PlaceOrder.css"
+import "./PlaceOrder.css";
 const PlaceOrder = () => {
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Calculate Price
   const addDecimals = (num) => {
@@ -112,7 +111,7 @@ const PlaceOrder = () => {
           </div>
         </div>
 
-        <div className="row order-products justify-content-between">
+        <div className="row order-products  justify-content-between">
           <div className="col-lg-8">
             {cart.cartItems.length === 0 ? (
               <Message variant="alert-info mt-5">Your cart is empty</Message>

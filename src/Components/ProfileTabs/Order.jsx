@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Message from "../LoadingError/Error";
 import Loading from "../LoadingError/Loading";
-
+import "./Profile.css"
 const Orders = (props) => {
   const { loading, error, orders } = props;
   return (
@@ -28,7 +28,7 @@ const Orders = (props) => {
               </Link>
             </div>
           ) : (
-            <div className="table-responsive">
+            <div className="table-responsive forOrderProfile">
               <table className="table">
                 <thead>
                   <tr>
@@ -38,17 +38,17 @@ const Orders = (props) => {
                     <th>TOTAL</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="orderForUSer">
                   {orders.map((order) => (
                     <tr
                       className={`${
-                        order.isPaid ? "alert-success" : "alert-danger"
+                        order.isPaid ? "orderForUSer" : "orderForUSer"
                       }`}
                       key={order._id}
                     >
                       <td>
-                        <a href={`/order/${order._id}`} className="link">
-                          {order._id}
+                        <a href={`/order/${order._id}`} className="">
+                         My order
                         </a>
                       </td>
                       <td>{order.isPaid ? <>Paid</> : <>Not Paid</>}</td>

@@ -6,7 +6,7 @@ import Loading from "./../LoadingError/Loading";
 import { toast } from "react-toastify";
 import { updateUserProfile } from "../Redux/Actions/userAction";
 import "react-toastify/dist/ReactToastify.css";
-
+import "./Profile.css"
 const ProfileTabs = () => {
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
@@ -60,7 +60,7 @@ const ProfileTabs = () => {
       {error && <Message variant="alert-danger">{error}</Message>}
       {loading && <Loading />}
       {updateLoading && <Loading />}
-      <form className="row  form-container" onSubmit={submitHandler}>
+      <form className="row  form-container forOrderProfile" onSubmit={submitHandler}>
         <div className="col-md-6">
           <div className="form">
             <label for="account-fn">UserName</label>

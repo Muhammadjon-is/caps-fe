@@ -8,24 +8,31 @@ import "./Shipping.css";
 
 const ShippingScreen = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
   console.log(shippingAddress);
 
-  const [address, setAddress] = useState(shippingAddress.address);
-  const [city, setCity] = useState(shippingAddress.city);
-  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-  const [country, setCountry] = useState(shippingAddress.country);
+  const [shippingInfo, setShippingInfo] = useState({
+    address: shippingAddress.address || "",
+    city: shippingAddress.city || "",
+    postalCode: shippingAddress.postalCode || "",
+    country: shippingAddress.country || "",
+  });
 
-  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    dispatch(saveShippingAddress(shippingInfo));
     navigate("/payment");
   };
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setShippingInfo((prev) => ({ ...prev, [name]: value }));
+  };
+  
   return (
     <>
       <div className="container d-flex justify-content-center align-items-center login-center">
@@ -38,7 +45,7 @@ const ShippingScreen = () => {
             >
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
-                  <Link className="text-dark total-price" to="/cart">
+                  <Link className=" total-price" to="/cart">
                     Cart
                   </Link>
                 </li>
@@ -73,18 +80,18 @@ const ShippingScreen = () => {
                   type="text"
                   placeholder="Enter Address"
                   className="form-control"
-                  value={address}
+                  value={shippingInfo.address}
                   required
-                  onChange={(e) => setAddress(e.target.value)}
+                  onChange={handleInputChange}
                 />
               </div>
-           
+
               <div className="flex-grow-1">
                 <input
                   type="text"
                   placeholder="Country"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
+                  value={shippingInfo.country}
+                  onChange={handleInputChange}
                   required
                   className="form-control"
                 />
@@ -93,8 +100,8 @@ const ShippingScreen = () => {
                 <input
                   type="text"
                   placeholder="City"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  value={shippingInfo.city}
+                  onChange={handleInputChange}
                   requiredq
                   className="form-control"
                 />
@@ -104,23 +111,22 @@ const ShippingScreen = () => {
                 <input
                   type="text"
                   placeholder="Zipcode"
-                  value={postalCode}
-                  onChange={(e) => setPostalCode(e.target.value)}
+                  value={shippingInfo.postalCode}
+                  onChange={handleInputChange}
                   className="form-control"
                 />
               </div>
               <div className="w-100">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <Link to="/cart" className="text-dark">
-                      <BiArrowBack className="me-2" />
-                      Return to Cart
-                    </Link>
-                    <button  type="submit" className="button">
-                      Continue to Payment
-                    </button>
-                  </div>
+                <div className="d-flex justify-content-between align-items-center">
+                  <Link to="/cart" className="button">
+                    <BiArrowBack className="me-2" />
+                    Return to Cart
+                  </Link>
+                  <button type="submit" className="button">
+                    Continue to Payment
+                  </button>
                 </div>
-
+              </div>
             </form>
           </div>
         </div>

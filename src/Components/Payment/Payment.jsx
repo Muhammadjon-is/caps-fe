@@ -24,7 +24,7 @@ const Payment = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center login-center">
+    <div className="container forPayment d-flex justify-content-center align-items-center login-center">
       <form
         className="Login2 col-md-8 col-lg-4 col-11"
         onSubmit={submitHandler}
@@ -42,7 +42,7 @@ const Payment = () => {
           </div>
         </div>
 
-        <button type="submit">Continue</button>
+        <button className="button" type="submit">Continue</button>
       </form>
     </div>
   );

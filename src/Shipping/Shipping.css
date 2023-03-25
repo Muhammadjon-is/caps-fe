@@ -1,3 +1,12 @@
 .login-center {
   padding: 50px 0;
 }
+.checkout-left-data {
+  color: orange !important;
+}
+.checkout-left-data  ol li a {
+  color: orange !important;
+}
+.checkout-left-data li {
+  color: orange !important;
+}

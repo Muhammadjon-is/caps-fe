@@ -105,14 +105,14 @@ const OrderScreen = () => {
                     <p>Shipping: {order.shippingAddress.country}</p>
                     <p>Pay method: {order.paymentMethod}</p>
                     {order.isPaid ? (
-                      <div className="bg-info p-2 col-12">
-                        <p className="text-white text-center text-sm-start">
+                      <div className=" p-2 col-12">
+                        <p className="text-white  button text-center text-sm-start">
                           Paid on {moment(order.paidAt).calendar()}
                         </p>
                       </div>
                     ) : (
-                      <div className="bg-danger p-2 col-12">
-                        <p className="text-white text-center text-sm-start">
+                      <div className=" p-2 col-12">
+                        <p className="text-white  button text-center text-sm-start">
                           Not Paid
                         </p>
                       </div>
@@ -144,8 +144,8 @@ const OrderScreen = () => {
                         </p>
                       </div>
                     ) : (
-                      <div className="bg-danger p-2 col-12">
-                        <p className="text-white text-center text-sm-start">
+                      <div className=" p-2 col-12">
+                        <p className="text-white button  text-center text-sm-start">
                           Not Delivered
                         </p>
                       </div>
