@@ -7,7 +7,7 @@ import Loading from "../LoadingError/Loading";
 import Rating from "./Rating";
 import { listProduct } from "../Redux/Actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
-
+import ReactPaginate from 'react-paginate';
 import "./ProductCard.css";
 // import { Laptop } from "@mui/icons-material";
 
@@ -17,7 +17,7 @@ const ProductCard = () => {
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
-console.log(products);
+  console.log(products);
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber));
   }, [dispatch, keyword, pagenumber]);
@@ -71,8 +71,7 @@ console.log(products);
                   pages={pages}
                   page={page}
                   keyword={keyword ? keyword : ""}
-                  />
-                
+                />
               </div>
             </div>
           </div>
