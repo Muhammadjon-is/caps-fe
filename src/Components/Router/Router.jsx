@@ -65,7 +65,7 @@ const RoutersApi = [
   },
   {
     id: 11,
-    path: "/OurStore/search/:keyword",
+    path: "/search/:keyword",
     element: <OurStore />,
   },
   {
