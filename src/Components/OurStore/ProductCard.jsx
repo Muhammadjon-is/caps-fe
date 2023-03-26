@@ -7,7 +7,6 @@ import Loading from "../LoadingError/Loading";
 import Rating from "./Rating";
 import { listProduct } from "../Redux/Actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import ReactPaginate from 'react-paginate';
 import "./ProductCard.css";
 // import { Laptop } from "@mui/icons-material";
 

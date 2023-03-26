@@ -1,12 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Contact.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const { name, email, message } = formData;
+  
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      setSubmitStatus("error");
+      return;
+    }
+  
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+      console.log(data);
+  
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+  
+      toast.success("Success Notification !", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      setSubmitStatus("success");
+    } catch (error) {
+      console.error(error);
+      toast.warning("Error sending message", {
+        position: toast.POSITION.TOP_LEFT,
+      });
+      setSubmitStatus("error");
+    }
+  };
+
   return (
     <section id="contact">
       <h1 className="section-header">Get in touch with me </h1>
       <div className="contact-wrapper">
-        <form id="contact-form" className="form-horizontal" role="form">
+        <form
+          id="contact-form"
+          onSubmit={handleSubmit}
+          className="form-horizontal"
+          role="form"
+        >
           <div className="form-group">
             <div className="col-sm-12">
               <input
@@ -16,6 +82,8 @@ const Contact = () => {
                 placeholder="NAME"
                 name="name"
                 required
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -29,6 +97,8 @@ const Contact = () => {
                 placeholder="EMAIL"
                 name="email"
                 required
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -39,14 +109,30 @@ const Contact = () => {
             placeholder="MESSAGE"
             name="message"
             required
+            value={formData.message}
+            onChange={handleChange}
           ></textarea>
 
-          <button>
+          <button type="submit">
             <p>Send message </p> <i class="fa-solid fa-arrow-right-long"></i>
           </button>
-          
-          
         </form>
+        {submitStatus === "success" && (
+          <div className="form-submit-message success">
+          
+            {toast.success("Success Notification !", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            })}
+          </div>
+        )}
+
+        {submitStatus === "error" && (
+          <div className="form-submit-message error">
+            {toast.warning("Warning Notification !", {
+              position: toast.POSITION.TOP_LEFT,
+            })}
+          </div>
+        )}
 
         <div className="direct-contact-container">
           <ul className="contact-list">
@@ -74,19 +160,8 @@ const Contact = () => {
           </ul>
 
           <hr />
-       
-         
         </div>
       </div>
-
-
-
-
-
-
-
-
-
     </section>
   );
 };
