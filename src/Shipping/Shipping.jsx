@@ -1,36 +1,28 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom/dist";
+import { useNavigate,} from "react-router-dom/dist";
 import { Link } from "react-router-dom/dist";
 import { BiArrowBack } from "react-icons/bi";
+
 import { saveShippingAddress } from "../Components/Redux/Actions/cartAction";
 import "./Shipping.css";
 
 const ShippingScreen = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
-  console.log(shippingAddress);
+  const navigate = useNavigate()
 
-  const [shippingInfo, setShippingInfo] = useState({
-    address: shippingAddress.address || "",
-    city: shippingAddress.city || "",
-    postalCode: shippingAddress.postalCode || "",
-    country: shippingAddress.country || "",
-  });
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
 
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress(shippingInfo));
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setShippingInfo((prev) => ({ ...prev, [name]: value }));
   };
   
   return (
@@ -80,9 +72,9 @@ const ShippingScreen = () => {
                   type="text"
                   placeholder="Enter Address"
                   className="form-control"
-                  value={shippingInfo.address}
+                  value={address}
                   required
-                  onChange={handleInputChange}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
 
@@ -90,8 +82,8 @@ const ShippingScreen = () => {
                 <input
                   type="text"
                   placeholder="Country"
-                  value={shippingInfo.country}
-                  onChange={handleInputChange}
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
                   required
                   className="form-control"
                 />
@@ -100,8 +92,8 @@ const ShippingScreen = () => {
                 <input
                   type="text"
                   placeholder="City"
-                  value={shippingInfo.city}
-                  onChange={handleInputChange}
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                   requiredq
                   className="form-control"
                 />
@@ -111,8 +103,8 @@ const ShippingScreen = () => {
                 <input
                   type="text"
                   placeholder="Zipcode"
-                  value={shippingInfo.postalCode}
-                  onChange={handleInputChange}
+                  value={postalCode}
+                  onChange={ (e) => setPostalCode(e.target.value)}
                   className="form-control"
                 />
               </div>
