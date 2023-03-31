@@ -10,63 +10,42 @@ const Contact = () => {
     message: "",
   });
 
-  const [submitStatus, setSubmitStatus] = useState(null);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    const { name, email, message } = formData;
-  
-    if (!name || !email || !message) {
-      toast.error("Please fill in all fields", {
-        position: toast.POSITION.BOTTOM_RIGHT,
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        toast.success("Thank you for contacting us. We'll get back to you soon.");
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        toast.error("Email already exists!!");
       });
-      setSubmitStatus("error");
-      return;
-    }
-  
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      const data = await response.json();
-      console.log(data);
-  
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
-  
-      toast.success("Success Notification !", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-      setSubmitStatus("success");
-    } catch (error) {
-      console.error(error);
-      toast.warning("Error sending message", {
-        position: toast.POSITION.TOP_LEFT,
-      });
-      setSubmitStatus("error");
-    }
   };
 
   return (
     <section id="contact">
       <h1 className="section-header">Get in touch with me </h1>
       <div className="contact-wrapper">
+        <ToastContainer/>
         <form
           id="contact-form"
           onSubmit={handleSubmit}
@@ -117,22 +96,7 @@ const Contact = () => {
             <p>Send message </p> <i class="fa-solid fa-arrow-right-long"></i>
           </button>
         </form>
-        {submitStatus === "success" && (
-          <div className="form-submit-message success">
-          
-            {toast.success("Success Notification !", {
-              position: toast.POSITION.BOTTOM_RIGHT,
-            })}
-          </div>
-        )}
-
-        {submitStatus === "error" && (
-          <div className="form-submit-message error">
-            {toast.warning("Warning Notification !", {
-              position: toast.POSITION.TOP_LEFT,
-            })}
-          </div>
-        )}
+        
 
         <div className="direct-contact-container">
           <ul className="contact-list">
