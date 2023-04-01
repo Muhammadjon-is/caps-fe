@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import "./responsive.css"
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import RoutersApi from './Components/Router/Router';

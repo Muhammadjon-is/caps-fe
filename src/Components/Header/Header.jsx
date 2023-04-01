@@ -7,7 +7,9 @@ import "./Header.css";
 import { logout } from "../Redux/Actions/userAction";
 
 const Header = () => {
-  const [keyword, setKeyword] = useState();
+  const [keyword, setKeyword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -15,21 +17,25 @@ const Header = () => {
   const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  const [setErrorMessage] = useState("");
 
 
   const logoutUser = () => {
     dispatch(logout());
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const searchProducts = (keyword) => {
     if (keyword.trim()) {
       navigate(`/search/${keyword}`);
     } else {
       setErrorMessage("Keyword not found");
     }
   };
+  
+  const submitHandler = (e) => {
+    e.preventDefault();
+    searchProducts(keyword);
+  };
+  
 
   // const userInfo =
 
@@ -47,7 +53,7 @@ const Header = () => {
               </h2>
             </div>
             <div className="col-5">
-             
+            {errorMessage && <div className="error">{errorMessage}</div>}
               <div className="col-12 d-flex align-items-center">
                 <form onSubmit={submitHandler} className="input-group">
                   <input

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import LoginContainer from "../Login.jsx/LoginContainer";
 import Crumb from "../Login.jsx/Crumb";
@@ -11,6 +11,8 @@ import ProductCard from "./ProductCard";
 // import axios from "axios";
 const OurStore = () => {
   const [grid, setGrid] = useState(4);
+
+  // Sort by Price
 
   return (
     <>
@@ -45,29 +47,6 @@ const OurStore = () => {
                     <label className="form-check-label" htmlFor="">
                       In Stock (1)
                     </label>
-                  </div>
-                </div>
-                <h5 className="sub-title">Price</h5>
-                <div className="d-flex align-items-center gap-10">
-                  <div className="form-floating">
-                    <input
-                      className="form-control"
-                      id="floatingInput"
-                      placeholder="From"
-                      //   value={minValue}
-                      // onChange={handleMinChange}
-                    />
-                    <label htmlFor="floatingInput">From</label>
-                  </div>
-                  <div className="form-floating">
-                    <input
-                      className="form-control"
-                      id="floatingInput1"
-                      placeholder="To"
-                      // value={maxValue}
-                      // onChange={handleMaxChange}
-                    />
-                    <label htmlFor="floatingInput1">To</label>
                   </div>
                 </div>
               </div>
@@ -130,64 +109,7 @@ const OurStore = () => {
             </div>
           </div>
           <div className="col-9">
-            <div className="filter-sort-grid mb-4">
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex align-items-center gap-10">
-                  <p className="mb-0 d-block" style={{ width: "100px" }}>
-                    Sort By:
-                  </p>
-                  <select
-                    name=""
-                    defaultValue={"manula"}
-                    className="form-control form-select"
-                    id=""
-                  >
-                    <option value="manual">Featured</option>
-
-                    <option value="price-ascending">Price, low to high</option>
-                    <option value="price-descending">Price, high to low</option>
-                  </select>
-                </div>
-                <div className="d-flex align-items-center gap-10">
-                  <p className="totalproducts mb-0">21 Products</p>
-                  <div className="d-flex gap-10 align-items-center grid">
-                    <img
-                      onClick={() => {
-                        setGrid(3);
-                      }}
-                      src={gr2}
-                      className="d-block img-fluid"
-                      alt="grid"
-                    />
-                    <img
-                      onClick={() => {
-                        setGrid(4);
-                      }}
-                      src={gr2}
-                      className="d-block img-fluid"
-                      alt="grid"
-                    />
-                    <img
-                      onClick={() => {
-                        setGrid(6);
-                      }}
-                      src={gr2}
-                      className="d-block img-fluid"
-                      alt="grid"
-                    />
-
-                    <img
-                      onClick={() => {
-                        setGrid(12);
-                      }}
-                      src={gr2}
-                      className="d-block img-fluid"
-                      alt="grid"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+        
             <div className="products-list pb-5">
               <div className="d-flex gap-10 flex-wrap">
                 {/* <ProductCard grid={grid} /> */}

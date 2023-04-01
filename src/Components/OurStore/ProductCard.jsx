@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Pagination from "./Pagination";
@@ -20,10 +20,38 @@ const ProductCard = () => {
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber));
   }, [dispatch, keyword, pagenumber]);
+
+
+  const [product, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProducts("price-descending");
+  }, []);
+
+  const fetchProducts = async (sortBy) => {
+    const response = await fetch(`/api/byPrice?sortBy=${sortBy}`);
+    const data = await response.json();
+    console.log(data);
+    setProducts(data);
+  };
+
+  const handleSortChange = (event) => {
+    const sortBy = event.target.value;
+    fetchProducts(sortBy);
+  };
+
+
+
   return (
     <>
       <div className="container">
         <div className="section">
+        <select onChange={handleSortChange} >
+                    <option value="manual">Featured</option>
+                    <option value="price-ascending">Price, low to high</option>
+                    <option value="price-descending">Price, high to low</option>
+                  </select>
+                   <br /> <br /> <br /> <br /> <br />
           <div className="row">
             <div className="col-lg-12 col-md-12 article">
               <div className="shopcontainer row">
