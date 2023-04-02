@@ -38,10 +38,11 @@ const Header = () => {
   
 
   // const userInfo =
+  
 
   return (
     <>
-      <header className="header-upper py-3 forfixed">
+      <header className="header-upper py-3 headerClass forfixed">
         <div className="container-xxl ">
           <div className="row align-items-center ">
             <div className="col-2">
@@ -79,7 +80,7 @@ const Header = () => {
                       <div className="menu-links">
                         <div className="d-flex align-items-center gap-15 ">
                           <Link to="/">Home</Link>
-                          <Link to="/OurStore">Our Store</Link>
+                          <Link to="/OurStore">Store</Link>
 
                           <Link to="/contact">Contact</Link>
 

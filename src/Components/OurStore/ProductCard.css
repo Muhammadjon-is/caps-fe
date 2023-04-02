@@ -26,6 +26,7 @@
   .product-card .product-image {
     height: 270px;
     width: 400px;
+    
   }
   .product-card .product-image img {
     object-fit: contain;

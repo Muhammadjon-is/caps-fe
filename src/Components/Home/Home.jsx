@@ -45,7 +45,7 @@ const Home = () => {
                   <div className="main_slider_content" data-aos="fade-right">
                     <h1>Get up to 30% Off New Arrivals</h1>
                     <div className="red_button shop_now_button">
-                      <a href="#">shop now</a>
+                    <Link to="/OurStore">shop now</Link>
                     </div>
                   </div>
                 </div>
@@ -66,7 +66,7 @@ const Home = () => {
                   <div className="main_slider_content" data-aos="fade-right">
                     <h1>Get up to 30% Off New Arrivals</h1>
                     <div className="red_button shop_now_button">
-                      <a href="#">shop now</a>
+                    <Link to="/OurStore">shop now</Link>
                     </div>
                   </div>
                 </div>
@@ -88,7 +88,7 @@ const Home = () => {
                 <h4>Republic of Gamers</h4>
                 <h5>Asus</h5>
                 <p>From $999.00</p>
-                <Link className="button">BUY NOW</Link>
+                <Link className="button" to="/OurStore">BUY NOW</Link>
               </div>
             </div>
           </div>
