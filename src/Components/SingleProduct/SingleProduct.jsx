@@ -56,6 +56,13 @@ const SingleProduct = () => {
       })
     );
   };
+  const props = {
+    width: 700,
+    height: 450,
+    zoomWidth: 500,
+
+    img: product.image,
+  };
   return (
     <>
       <div className="container single-product">
@@ -68,7 +75,7 @@ const SingleProduct = () => {
             <div className="row">
               <div className="col-md-6">
                 <div className="single-image">
-                  <img src={product.image} alt={product.name} />
+                 <img src={product.image} alt={product.name} />
                 </div>
               </div>
               <div className="col-md-6">
@@ -154,7 +161,7 @@ const SingleProduct = () => {
                 <div className="my-4">
                   {loadingCreateReview && <Loading />}
                   {errorCreateReview && (
-                    <Message variant="alert-danger">
+                    <Message variant="alert-info">
                       {errorCreateReview}
                     </Message>
                   )}

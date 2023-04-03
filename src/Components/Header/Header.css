@@ -7,9 +7,8 @@
   position: sticky;
   width: 100%;
   top: 0;
-left: 0;
-z-index: 9999;
- 
+  left: 0;
+  z-index: 9999;
 }
 .header-bottom {
   background-color: #111111;
@@ -37,12 +36,25 @@ background-color: aliceblue;
   height: 35px;
 }
 .menu-links a {
-  color: orange;
+  color: rgb(230, 230, 230);
+  padding: 5px;
 }
 .menu-links a:hover {
   cursor: pointer;
   color: white;
+  background-color: #4b4949;
+
+  border-radius: 10px;
 }
+
+.menu-links a:focus {
+  cursor: pointer;
+  color: white;
+  background-color: #4b4949;
+
+  border-radius: 10px;
+}
+
 .registerLogin {
   padding-left: 10px;
 }
@@ -52,19 +64,64 @@ background-color: aliceblue;
   color: orange;
 }
 .colorLogin {
-  color: orange !important;
   background-color: #111111 !important;
+  color: orange !important;
+  border-radius: 10px;
+}
+.colorLogin:active {
+  cursor: pointer;
+  background-color: #4b4949 !important;
+  color: white !important;
+
+  border-radius: 10px;
 }
 .dropbg {
   background-color: #111111 !important;
   color: white!;
+  border-radius: 10px;
 }
-.dropbg :hover{
-  color: white !important;
-  background: none !important;
+.dropbg :hover {
+  color: white;
+  background-color: #4b4949;
+  border-radius: 10px;
 }
-.search-button {
-  width: 60px;
-  height: 38px;
+
+.forBorder {
+  border: 2px solid rgb(59, 58, 58);
+  border-radius: 30px;
+  height: 73px;
+}
+
+.changeSearchbar {
+  background-color: #242424;
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+.changeSearchbar input {
+  padding: 10px;
+  width: 130px;
+  border: none;
+  background-color: #242424;
+  color: #fff;
+  position: absolute;
+  border-radius: 5px 0 0 5px;
+}
+.changeSearchbar .search-button {
+  background-color: #242424;
+  color: #fff;
+  border: none;
+  /* border-radius: 0 5px 5px 0; */
+  cursor: pointer;
+  height: 40px;
+  transition: all 0.3s ease;
+  width: 90px;
+  border-left: 3px solid #666565;
   margin-top: 12px;
+}
+.changeSearchbar .rounded:focus {
+  box-shadow: 0 0 5px rgba(224, 228, 224, 0.5);
+  color: #fffefe;
+  background-color: #242424;
 }

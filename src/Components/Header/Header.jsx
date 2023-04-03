@@ -18,7 +18,6 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-
   const logoutUser = () => {
     dispatch(logout());
   };
@@ -30,20 +29,18 @@ const Header = () => {
       setErrorMessage("Keyword not found");
     }
   };
-  
+
   const submitHandler = (e) => {
     e.preventDefault();
     searchProducts(keyword);
   };
-  
 
   // const userInfo =
-  
 
   return (
     <>
-      <header className="header-upper py-3 headerClass forfixed">
-        <div className="container-xxl ">
+      <header className="header-upper py-3 headerClass forfixed ">
+        <div className="container-xxl  forBorder">
           <div className="row align-items-center ">
             <div className="col-2">
               <h2>
@@ -53,9 +50,8 @@ const Header = () => {
                 </Link>
               </h2>
             </div>
-            <div className="col-5">
-            {errorMessage && <div className="error">{errorMessage}</div>}
-              <div className="col-12 d-flex align-items-center">
+            <div className="col-5 ">
+              <div className="col-12 d-flex align-items-center changeSearchbar ">
                 <form onSubmit={submitHandler} className="input-group">
                   <input
                     type="search"
@@ -67,7 +63,7 @@ const Header = () => {
                     type="submit"
                     className="rounded search search-button"
                   >
-                    search
+                    <i class="fa-solid fa-magnifying-glass"></i>
                   </button>
                 </form>
               </div>
@@ -88,7 +84,7 @@ const Header = () => {
                             {userInfo ? (
                               <div className="dropdown  colorLogin">
                                 <button
-                                  className="btn btn-danger menu-links dropdown-toggle"
+                                  className="btn colorLogin menu-links dropdown-toggle"
                                   type="button"
                                   id="dropdownMenuButton1"
                                   data-bs-toggle="dropdown"
@@ -97,7 +93,7 @@ const Header = () => {
                                   Hi, {userInfo.name}
                                 </button>
                                 <ul
-                                  class="dropdown-menu dropbg"
+                                 class="dropdown-menu dropbg"
                                   aria-labelledby="dropdownMenuButton1"
                                 >
                                   <li>

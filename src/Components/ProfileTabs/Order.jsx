@@ -19,7 +19,7 @@ const Orders = (props) => {
               No Orders
               <Link
                 className="btn btn-success mx-2 px-3 py-2"
-                to="/"
+                to="/OurStore"
                 style={{
                   fontSize: "12px",
                 }}

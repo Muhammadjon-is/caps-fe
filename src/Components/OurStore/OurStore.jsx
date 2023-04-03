@@ -21,17 +21,7 @@ const OurStore = () => {
       <LoginContainer class1="store-wrapper ourStore home-wrapper-2 py-5">
         <div className="row ">
           <div className="col-3">
-            <div className="filter-card mb-3">
-              <h3 className="filter-title">Shop By Categories</h3>
-              <div>
-                <ul className="ps-0">
-                  <li>Laptops</li>
-                  <li>Keyboards</li>
-                  <li>Earphones</li>
-                  <li>Mouses</li>
-                </ul>
-              </div>
-            </div>
+          
             <div className="filter-card mb-3">
               <h3 className="filter-title">Filter By</h3>
               <div>

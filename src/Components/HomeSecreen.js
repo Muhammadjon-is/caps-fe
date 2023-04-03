@@ -11,7 +11,6 @@ const HomeSecreen = () => {
     <div>
 <OurStore/>
       {/* <ProductCard keyword={keyword} pagenumber={pagenumber} /> */}
-      <Footer />
     </div>
   );
 };
